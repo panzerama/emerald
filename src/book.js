@@ -1,4 +1,6 @@
 // We can export objects
+console.log("this shouldn't execute until the import!");
+
 let books = [
   { title:'Moby Dick', price:20 },
   { title:'Tom Sawyer', price:12 },
@@ -8,7 +10,7 @@ let books = [
 // We can export functions
 export const getBook = (title) => {
   // return a book by title
-  return this.books.find((book) => {
+  return books.find((book) => {
     return book.title === title;
   });
 }

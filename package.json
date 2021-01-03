@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src --out-dir dist",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "babel-node dist/languageFeatures.js"
+    "start": "babel src --out-dir dist && babel-node dist/languageFeatures.js"
   },
   "repository": {
     "type": "git",

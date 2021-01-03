@@ -8,7 +8,8 @@ function stdOut(someValue) {
   console.log(someValue);
 }
 
-stdOut("to the console!");
+// Example
+// stdOut("to the console!");
 
 /**
  * var, let, const
@@ -23,7 +24,7 @@ function scopeItOut() {
   console.log('x inside a function is ' + x); // prints 42
 }
 
-console.log('x outside a function is ' + x);
+// console.log('x outside a function is ' + x);
 
 function scopeItIn() {
   const y = 32;
@@ -36,6 +37,7 @@ function scopeItIn() {
 }
 
 // try it out
+// scopeItOut()
 // scopeItIn()
 
 /**
@@ -68,7 +70,7 @@ const anObject = {
   aFunc: changingTypes,
 };
 
-anObject.aFunc();
+// anObject.aFunc();
 
 const anArray = [82, "heterogenous", anObject];
 
@@ -83,11 +85,20 @@ function addTwo(toNumber) {
   return toNumber + 2;
 }
 
-console.log(wrapper(addTwo));
+// console.log(wrapper(addTwo));
 
 /** Strings */
 // String concatenation
+let firstString = 'first';
+let secondString = 'second';
+let fourthString = 'fourth';
+
+// console.log(firstString + ' ' + secondString + ' ' + fourthString);
+
 // Template string
+const stringFunc = () => { 'this string' }
+
+// console.log(`We can use a function to insert ${stringFunc} into this string`);
 
 /**
  * Control Statements, Truthiness/Falsiness
@@ -108,11 +119,12 @@ var isDef = "Hello, world!";
 var isTrue = true;
 var isNotZero = 1;
 
-/**
- * Classes, Prototypes, the `this` keyword, and Method Chaining 
- */
-
-/** map/filter/reduce */
+// if (isNull) {
+//   console.log('truthy!');
+// }
+// else {
+//   console.log('falsey');
+// }
 
 /** 
  * Asynchronous JavaScript
@@ -133,13 +145,15 @@ const printValue = (value) => {
   console.log(value);
 }
 
-someAsync(42, printValue);
+// Example
+// someAsync(42, printValue);
 
 /**
  * You can also pass an anonymous function in as a callback
  */
 
-someAsync(42, (value) => { console.log(value) })
+// Example
+// someAsync(42, (value) => { console.log(value) })
  
 /** 
  * Promises
@@ -164,15 +178,81 @@ var options = {
 //   console.log(error);
 // });
 
+/**
+ * Classes, Prototypes, the `this` keyword, and Method Chaining 
+ */
+
+class Point {
+  constructor(x, y) {
+    this.x = x;
+    this.y = y;
+  }
+
+  coordinateString() {
+    return `(${this.x}, ${this.y})`;
+  }
+
+  static pointDistanceFrom(point, otherx, othery) {
+    let a = Math.abs(point.x - otherx);
+    let b = Math.abs(point.y - othery);
+    return Math.floor(Math.pow(Math.pow(a, 2) + Math.pow(b, 2), .5));
+  } 
+}
+
+// Example
+// const point = new Point(3, 4);
+// console.log(point.coordinateString());
+// console.log(Point.pointDistanceFrom(point, 5, 6));
+
+/** 
+ * map/filter/reduce 
+ */
+
+let cities = [
+  "New York City",
+  "Los Angeles",
+  "Chicago",
+  "Houston",
+  "Phoenix",
+  "Philadelphia",
+  "San Antonio",
+  "San Diego",
+  "Dallas",
+  "San Jose",
+  "Austin",
+  "Jacksonville",
+  "Fort Worth",
+  "Columbus",
+  "Charlotte",
+  "San Francisco"
+]
+
+let oneCity = cities.filter((city) => {
+  return city === "San Francisco"
+})
+
+// console.log(oneCity);
+
+function modifyCity(city) {
+  return "City of " + city
+}
+
+let modifiedCities = cities.map(modifyCity);
+// console.log(modifiedCities);
+
+let values = [3, 16, 13, 20, 10, 14, 18, 10, 12, 14]
+let sum = values.reduce((aggregator, number) => aggregator + number, 0);
+// notice the implicit return above!
+// console.log(sum);
 
 /** 
  * Modules
  */
 
-const book = require('./book.js'); // note that code in the module isn't 
-                                   // executed until it's imported
+// const book = require('./book.js'); // note that code in the module isn't 
+//                                    // executed until it's imported
 
-console.log(book.getBook('Moby Dick'));
+// console.log(book.getBook('Moby Dick'));
 
 //import { byPriceAsc, getPrice } from './book.js';
 
