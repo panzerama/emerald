@@ -1,0 +1,29 @@
+{
+  "name": "emerald",
+  "version": "1.0.0",
+  "description": "",
+  "main": "book.js",
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "babel-node dist/languageFeatures.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/panzerama/emerald.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/panzerama/emerald/issues"
+  },
+  "homepage": "https://github.com/panzerama/emerald#readme",
+  "dependencies": {
+    "@babel/cli": "^7.12.10",
+    "@babel/preset-env": "^7.12.11",
+    "axios": "^0.21.1",
+    "dotenv": "^8.2.0",
+    "@babel/core": "^7.12.10",
+    "@babel/node": "^7.12.10"
+  }
+}

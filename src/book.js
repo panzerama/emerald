@@ -1,19 +1,30 @@
+// We can export objects
 let books = [
   { title:'Moby Dick', price:20 },
   { title:'Tom Sawyer', price:12 },
   { title:'War & Peace', price:25 }
 ];
 
-exports.getBook = (title) => {
+// We can export functions
+export const getBook = (title) => {
   // return a book by title
   return this.books.find((book) => {
     return book.title === title;
   });
 }
 
-exports.byPriceAsc = () => {
+const byPriceAsc = () => {
   // return a sorted list of books
   return this.books.sort((a, b) => {
     return a.price - b.price;
   });
 }
+
+const getPrice = (title) => {
+  return this.books.find((book) => {
+    return book.price;
+  })
+}
+
+// We can export multiple things at the same time.
+// export { byPriceAsc, getPrice }
