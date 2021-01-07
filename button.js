@@ -3,6 +3,11 @@ function changeColor() {
   blueDiv.style.backgroundColor = "lightgreen";
 }
 
+function changeColorBack() {
+  var changeableDiv = document.getElementById("changeable")
+  changeableDiv.style.backgroundColorg = 'blue'
+}
+
 function replaceWord() {
   var wordable = document.getElementById('wordable');
 
