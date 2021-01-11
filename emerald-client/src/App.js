@@ -1,10 +1,12 @@
 import './App.css';
-import LogoBox from './components/LogoBox'
+import LogoBar from './components/LogoBar'
+import FeaturedItemGroup from './components/FeaturedItemGroup'
 
 function App() {
   return (
-    <div className="App">
-      <LogoBox></LogoBox>
+    <div>
+      <LogoBar></LogoBar>
+      <FeaturedItemGroup></FeaturedItemGroup>
     </div>
   );
 }

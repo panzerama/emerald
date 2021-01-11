@@ -1,0 +1,15 @@
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  padding: 10px;
+  background-color: lightblue;
+}
+
+.logo {
+  height: 50px;
+}
+
+.title {
+  margin-left: 10px;
+}
