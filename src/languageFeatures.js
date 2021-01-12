@@ -199,6 +199,23 @@ class Point {
   } 
 }
 
+class Rectangle {
+  constructor(length, height) {
+    this.length = length;
+    this.height = height;
+  }
+
+  area() {
+    return length * height
+  }
+}
+
+class Square extends Rectangle {
+  constructor(length) {
+    super(length, length);
+  }
+}
+
 // Example
 // const point = new Point(3, 4);
 // console.log(point.coordinateString());
