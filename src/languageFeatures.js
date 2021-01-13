@@ -216,10 +216,40 @@ class Square extends Rectangle {
   }
 }
 
+// What does it look like under the hood?
+// Refer to Chapter 9 of JavaScript: The Definitive Guide
+
 // Example
 // const point = new Point(3, 4);
 // console.log(point.coordinateString());
 // console.log(Point.pointDistanceFrom(point, 5, 6));
+// const square = new Square(5);
+// console.log(square.area());
+
+// Get this!
+
+const test = {
+  prop: 42,
+  func: function() { // The context is the object with prop 42
+    return this.prop; // so this.prop evaluates to 42
+  },
+};
+
+// console.log(test.func());
+
+// Implicit Binding "to the left of the dot"
+const context = {
+  a: 2,
+  f: function (something) {
+    console.log(this.a);
+    return something + 5;
+  }
+};
+
+console.log(context.f(5));
+
+// Demo Mixins!
+// tbd
 
 /** 
  * map/filter/reduce 
