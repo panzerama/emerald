@@ -1,12 +1,16 @@
-import './App.css';
-import LogoBar from './components/LogoBar'
-import FeaturedItemGroup from './components/FeaturedItemGroup'
+import Container from "@material-ui/core/Container";
+
+import "./App.css";
+import LogoBar from "./components/LogoBar";
+import EntryPoint from "./components/EntryPoint";
+import FeaturedItemGroup from "./components/FeaturedItemGroup";
 
 function App() {
   return (
     <div>
-      <LogoBar></LogoBar>
-      <FeaturedItemGroup></FeaturedItemGroup>
+      <LogoBar />
+      <EntryPoint />
+      <FeaturedItemGroup />
     </div>
   );
 }
