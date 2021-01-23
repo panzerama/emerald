@@ -9,7 +9,7 @@ import {
 import { makeStyles } from "@material-ui/core/styles";
 
 import Colors from "../styles/colors";
-import d20 from '../images/d20.svg';
+import emeraldLogo from '../images/emerald-logo.png';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,6 +23,10 @@ const useStyles = makeStyles((theme) => ({
   },
   toolbar: {
     backgroundColor: Colors.darkGreen,
+  },
+  buttonImage: {
+    width: '40px',
+    height: '40px',
   }
 }));
 
@@ -34,15 +38,15 @@ export default function LogoBar(props) {
         <IconButton
           edge="start"
           className={classes.menuButton}
-          color="inherit"
           aria-label="menu"
         >
-          <svg src={d20} />
+          <img src={emeraldLogo} className={classes.buttonImage} alt='Site Logo'/>
         </IconButton>
         <Typography variant="h6" className={classes.title}>
-          News
+          Emerald City Game Masters Guild
         </Typography>
         <Button color="inherit">Login</Button>
+        <Button color="inherit">Sign Up</Button>
       </Toolbar>
     </AppBar>
   );
