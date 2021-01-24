@@ -1,12 +1,28 @@
-import React from 'react'
-import './FeaturedItem.css'
+import React from "react";
+import {
+  Card,
+  CardActionArea,
+  CardContent,
+  makeStyles,
+} from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  root: {
+    padding: theme.spacing(1),
+  },
+}));
 
 export default function FeaturedItem(props) {
+  const classes = useStyles();
   return (
-    <div className="container">
-      <h2>Some Event</h2>
-      <hr />
-      <p>Some featured text</p>
-    </div>
-  )
+    <Card className={classes.root}>
+      <CardActionArea>
+        <CardContent>
+          <h2>Some Event</h2>
+          <hr />
+          <p>Some featured text</p>
+        </CardContent>
+      </CardActionArea>
+    </Card>
+  );
 }

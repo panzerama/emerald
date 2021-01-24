@@ -15,6 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
   card: {
     height: "150px",
+    padding: theme.spacing(2)
   },
 }));
 
@@ -53,11 +54,8 @@ export default function EntryPoint() {
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small" color="primary">
-                Share
-              </Button>
-              <Button size="small" color="primary">
-                Learn More
+              <Button size="medium" color="primary">
+                Get Started
               </Button>
             </CardActions>
           </Card>
@@ -67,15 +65,12 @@ export default function EntryPoint() {
             <CardContent>
               <Typography variant="h4">Adventurer</Typography>
               <Typography>
-                Maybe this is your first time with an RPG or maybe not.
+                You've done this before and are looking for more.
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small" color="primary">
-                Share
-              </Button>
-              <Button size="small" color="primary">
-                Learn More
+            <Button size="medium" color="primary">
+                Get Started
               </Button>
             </CardActions>
           </Card>
@@ -85,15 +80,13 @@ export default function EntryPoint() {
             <CardContent>
               <Typography variant="h4">Legend</Typography>
               <Typography>
-                Maybe this is your first time with an RPG or maybe not.
+                Adventure is your middle name. You want to broaden your 
+                horizons.
               </Typography>
             </CardContent>
             <CardActions>
-              <Button size="small" color="primary">
-                Share
-              </Button>
-              <Button size="small" color="primary">
-                Learn More
+            <Button size="medium" color="primary">
+                Get Started
               </Button>
             </CardActions>
           </Card>
