@@ -1,5 +1,3 @@
-import Container from "@material-ui/core/Container";
-
 import "./App.css";
 import LogoBar from "./components/LogoBar";
 import EntryPoint from "./components/EntryPoint";
