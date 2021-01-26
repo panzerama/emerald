@@ -3,10 +3,20 @@ const express = require("express");
 const app = express();
 const port = 4000;
 
+const logger = (req, res, next) => {
+  console.log("Logger was triggered.");
+  next()
+}
 
+app.use(logger);
+
+// Every one of these app.METHOD calls is defining middleware
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
+
+// Organize these into routes with routers for organization!
+// app.use('/api/v1', routerThingy)
 
 // Get all products
 app.get('/api/v1/products', (req, res) => {
