@@ -3,36 +3,36 @@ const express = require("express");
 const app = express();
 const port = 4000;
 
-const connectionString = 'mongodb+srv://jonas:<password>@cluster0.49ssl.mongodb.net/<dbname>?retryWrites=true&w=majority';
-const mongoose = require("mongoose");
-mongoose.connect(connectionString);
-const db = mongoose.connection();
-
-const Schema = mongoose.Schema;
-
-const UserSchema = new Schema({
-  username: String,
-  membershipDate: Date,
-  userRole: String
-});
-
-const UserModel = mongoose.model('User', UserSchema);
-
-const jsonsUser = new UserModel({
-  username: 'Json',
-  membershipDate: '2021-01-26',
-  userRole: 'admin'
-})
-
-jsonsUser.save(function (err) {
-  if (err) return handleError(err);
-});
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// app.get("/users")..
+// Get all products
+app.get('/api/v1/products', (req, res) => {
+  res.sendStatus(501);
+});
+
+// Get a single product by id
+app.get('/api/v1/products/:id', (req, res) => {
+  res.sendStatus(501);
+});
+
+// Create a new product
+app.post('/api/v1/products', (req, res) => {
+  res.sendStatus(501);
+});
+
+// Update an existing product
+app.put('/api/v1/products/:id', (req, res) => {
+  res.sendStatus(501);
+});
+
+// Delete an existing product
+app.delete('/api/v1/products/:id', (req, res) => {
+  res.sendStatus(501);
+});
+
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
