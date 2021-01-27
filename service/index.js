@@ -1,8 +1,10 @@
-// import express from 'express'
 const express = require("express");
 const app = express();
 const port = 4000;
 
+const productsRouter = require('./routes/products');
+
+// a logging middleware
 const logger = (req, res, next) => {
   console.log("Logger was triggered.");
   next()
@@ -15,7 +17,12 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// Organize these into routes with routers for organization!
+// workitem add something to the request with middleware
+// workitem chain middleware together
+// workitem returning static data
+// workitem error handling
+
+// workitem Organize these into routes with routers for organization!
 // app.use('/api/v1', routerThingy)
 
 // Get all products
@@ -42,6 +49,8 @@ app.put('/api/v1/products/:id', (req, res) => {
 app.delete('/api/v1/products/:id', (req, res) => {
   res.sendStatus(501);
 });
+
+// workitem set up example for app.use)'/api/v1', router
 
 
 app.listen(port, () => {
