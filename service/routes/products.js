@@ -1,27 +1,28 @@
 const express = require('express');
 const productsRouter = express.Router();
 
-router.param('productId', function(request, response, next) {
-  request.productObject = {
-    id: 123,
-    description: "Somebody's old hat"
-  };
-  return next(); // to ensure we don't accidentally call next elsewhere
-});
+const mockData = require('../data/mockData');
 
-router
-  .route('/products/:id')
-  .all(function (request, response, next) {
-    // Do something for all calls to this path
+// app.use('/api/v1/products', productsRouter) goes in the index.js file
+
+productsRouter.route('/')
+  .get((req, res, next) => {
+    res.json(mockData.productList);
   })
-  .post(function (request, response, next) {
-    // for the post method
+  .post((req, res, next) => {
+    // when we encounter an error
+    next("An error");
+  });
+
+productsRouter.route('/:id')
+  .get((req, res, next) => {
+    res.sendStatus(501);
   })
-  .put(function (request, response, next) {
-    // for the put method
+  .put((req, res, next) => {
+    res.sendStatus(501);
   })
-  .delete(function (request, response, next) {
-    // for the delete method
+  .delete((req, res, next) => {
+    res.sendStatus(501);
   });
 
 module.exports = productsRouter;

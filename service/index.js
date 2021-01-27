@@ -6,24 +6,27 @@ const productsRouter = require('./routes/products');
 
 // a logging middleware
 const logger = (req, res, next) => {
-  console.log("Logger was triggered.");
-  next()
+  console.log(`App received request ${req.method} - ${req.url}`);
+  return next();
+}
+
+const addSomething = (req, res, next) => {
+  req.newValue = "something valueable";
+  // what happens when we neglect to add next()
+  return next();
 }
 
 app.use(logger);
+app.use(addSomething)
+app.use(express.json());
+// alternatively, app.use('/api/v4', [logger, addSomething, express.json()]);
 
-// Every one of these app.METHOD calls is defining middleware
 app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// workitem add something to the request with middleware
-// workitem chain middleware together
 // workitem returning static data
 // workitem error handling
-
-// workitem Organize these into routes with routers for organization!
-// app.use('/api/v1', routerThingy)
 
 // Get all products
 app.get('/api/v1/products', (req, res) => {
@@ -49,9 +52,6 @@ app.put('/api/v1/products/:id', (req, res) => {
 app.delete('/api/v1/products/:id', (req, res) => {
   res.sendStatus(501);
 });
-
-// workitem set up example for app.use)'/api/v1', router
-
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
