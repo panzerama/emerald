@@ -25,9 +25,6 @@ app.get("/", (req, res) => {
   res.send("Hello World!");
 });
 
-// workitem returning static data
-// workitem error handling
-
 // Get all products
 app.get('/api/v1/products', (req, res) => {
   res.sendStatus(501);
@@ -52,6 +49,8 @@ app.put('/api/v1/products/:id', (req, res) => {
 app.delete('/api/v1/products/:id', (req, res) => {
   res.sendStatus(501);
 });
+
+app.use('/api/v2/products', productsRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
