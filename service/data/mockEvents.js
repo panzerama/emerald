@@ -1,5 +1,6 @@
 exports.upcomingEvents = [
   {
+    id: 1,
     name: "Love is in the Aaracokra",
     date: "2021-02-15T18:33:27-08:00",
     gameMaster: "Jason D Panzer",
@@ -7,6 +8,7 @@ exports.upcomingEvents = [
     details: "A crazy bird-brained adventure",
   },
   {
+    id: 2,
     name: "Jurassic Park",
     date: "2021-02-22T18:33:27-08:00",
     gameMaster: "Allison Smith",
@@ -14,6 +16,7 @@ exports.upcomingEvents = [
     details: "Dinosaurs",
   },
   {
+    id: 3,
     name: "Saved by the Spell",
     date: "2021-03-10T19:33:27-08:00",
     gameMaster: "Nikkie Silveira",
@@ -21,6 +24,7 @@ exports.upcomingEvents = [
     details: "High school is dark magic",
   },
   {
+    id: 4,
     name: "The Land of the Midnight Sun",
     date: "2021-03-28T15:33:27-08:00",
     gameMaster: "Doug Johnson",
@@ -28,6 +32,7 @@ exports.upcomingEvents = [
     details: "Vikings run amok",
   },
   {
+    id: 5,
     name: "Love is in the Aaracokra",
     date: "2021-02-15T18:33:27-08:00",
     gameMaster: "Jason D Panzer",
@@ -35,6 +40,7 @@ exports.upcomingEvents = [
     details: "A crazy bird-brained adventure",
   },
   {
+    id: 6,
     name: "Love is in the Aaracokra",
     date: "2021-02-15T18:33:27-08:00",
     gameMaster: "Jason D Panzer",

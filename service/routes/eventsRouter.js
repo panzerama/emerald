@@ -7,6 +7,6 @@ eventsRouter
   .route('/')
   .get((req, res) => {
     res.send(upcomingEvents);
-  })
+  });
 
 module.exports = eventsRouter;

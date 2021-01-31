@@ -12,15 +12,19 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function FeaturedItem(props) {
+export default function Event(props) {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardContent>
-          <h2>Some Event</h2>
+          <h2>{props.event.name}</h2>
           <hr />
-          <p>Some featured text</p>
+          <p>{props.event.details}</p>
+          <hr />
+          <p>{props.event.gameMaster}</p>
+          <hr /> 
+          <p>{props.event.date}</p>
         </CardContent>
       </CardActionArea>
     </Card>

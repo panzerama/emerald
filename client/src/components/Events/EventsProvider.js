@@ -2,8 +2,7 @@ import React from "react";
 import { Grid, Typography } from "@material-ui/core";
 import { makeStyles } from '@material-ui/core/styles';
 
-import FeaturedItem from "./FeaturedItem";
-import "./FeaturedItemGroup.css";
+import EventsList from "./EventsList";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -14,7 +13,7 @@ const useStyles = makeStyles((theme) => ({
   }
 }));
 
-export default function FeaturedItemGroup(props) {
+export default function EventsProvider(props) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -22,13 +21,7 @@ export default function FeaturedItemGroup(props) {
         <Grid container item direction="row" className={classes.featuredTitle}>
             <Typography variant="h3">Upcoming Games</Typography>
         </Grid>
-        <Grid container item direction="row" wrap="nowrap" spacing={1}>
-          {[1, 2, 3, 4, 5].map((value) => (
-            <Grid key={value} item xs={2}>
-            <FeaturedItem />
-          </Grid>
-          ))}
-        </Grid>
+        <EventsList />
       </Grid>
     </div>
   );
