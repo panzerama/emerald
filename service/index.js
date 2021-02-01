@@ -1,11 +1,13 @@
 const express = require("express");
 const app = express();
 const port = 4000;
+const morgan = require('morgan');
+const cors = require('cors');
 
 const eventsRouter = require('./routes/eventsRouter');
-const morgan = require('morgan');
 
 app.use(morgan('tiny'));
+app.use(cors());
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
