@@ -1,8 +1,11 @@
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
+
 import PostContainer from './PostContainer';
 
 export default function PostsProvider(props) {
   // show off useState and useEffect
-  const posts = [
+  const mockPosts = [
     {
       id: 1,
       title: 'Lorem',
@@ -34,8 +37,47 @@ export default function PostsProvider(props) {
       body: 'Erat nam at lectus urna duis convallis convallis. Cras sed felis eget velit aliquet sagittis id consectetur purus. Et pharetra pharetra massa massa ultricies. Congue nisi vitae suscipit tellus mauris a. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. Pellentesque habitant morbi tristique senectus et. Enim ut tellus elementum sagittis vitae et leo duis. Elit eget gravida cum sociis. Amet venenatis urna cursus eget nunc. Fusce ut placerat orci nulla pellentesque dignissim. Malesuada pellentesque elit eget gravida cum sociis. Etiam dignissim diam quis enim lobortis scelerisque. Quisque id diam vel quam elementum pulvinar etiam non quam. Pulvinar elementum integer enim neque volutpat ac. Egestas sed sed risus pretium quam vulputate. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Quam lacus suspendisse faucibus interdum posuere lorem.',
     },
   ]
+
+  const [posts, setPosts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
   
-  return (
+  useEffect(() => {
+    console.log('[PostsProvider] useEffect call');
+    const requestConfig = {
+      url: 'http://localhost:4000/v1/posts',
+      method: 'get',
+      headers: { "Content-Type": "application/json" },
+    }
+
+    axios(requestConfig)
+    .then((response) => {
+      setPosts(response.data);
+      setLoading(false);
+    })
+    .catch((err) => {
+      setError(err);
+      setLoading(false);
+    })
+  }, []);
+
+  const renderLoading = () => {
+    return <div>Loading...</div>
+  }
+
+  const renderError = () => {
+    return <p>{`Whoops, something went wrong! Error ${error}`}</p>
+  }
+
+  const renderPosts = () => {
     <PostContainer posts={posts.slice(0,4)} />
-  )
+  }
+  
+  if (loading) {
+    return renderLoading();
+  } else if (posts.length > 0) {
+    return renderPosts();
+  } else {
+    return renderError();
+  }
 }
