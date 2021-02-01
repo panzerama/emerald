@@ -8,7 +8,9 @@ function App() {
     <div>
       <LogoBar />
       <EntryPoint />
+      {/** we encapsulate all of the event related logic in one component */}
       <EventsProvider />
+      {/** workitem add posts/articles provider */}
     </div>
   );
 }
