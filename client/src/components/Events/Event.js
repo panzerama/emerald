@@ -19,11 +19,8 @@ export default function Event(props) {
       <CardActionArea>
         <CardContent>
           <h2>{props.event.name}</h2>
-          <hr />
           <p>{props.event.details}</p>
-          <hr />
           <p>{props.event.gameMaster}</p>
-          <hr /> 
           <p>{props.event.date}</p>
         </CardContent>
       </CardActionArea>
