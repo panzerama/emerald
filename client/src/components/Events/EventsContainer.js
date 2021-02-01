@@ -18,7 +18,7 @@ export default function EventsContainer(props) {
   return (
     <div className={classes.root}>
       <Grid container direction="column">
-        <Grid container item direction="row" className={classes.featuredTitle}>
+        <Grid item className={classes.featuredTitle}>
             <Typography variant="h3">Upcoming Games</Typography>
         </Grid>
         <EventsList events={props.events}/>
