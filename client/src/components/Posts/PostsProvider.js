@@ -28,6 +28,13 @@ export default function PostsProvider(props) {
     })
   }, []);
 
+  useEffect(() => {
+    //do something based on loading
+    return function afterEffect() {
+      console.log("I wonder when afterEffect in [PostsProvider] gets called?");
+    }
+  }, [loading]);
+
   const renderLoading = () => {
     return <div>Loading...</div>
   }
@@ -37,7 +44,11 @@ export default function PostsProvider(props) {
   }
 
   const renderPosts = () => {
-    return <PostContainer posts={posts.slice(0,4)} />
+    return <PostContainer posts={posts.slice(0, 4)} buttonHandler={() => { handleShowLoadingButton() }} />
+  }
+
+  const handleShowLoadingButton = (e) => {
+    setLoading(true);
   }
   
   if (loading) {

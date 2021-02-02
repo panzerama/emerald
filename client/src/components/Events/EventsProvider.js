@@ -26,7 +26,7 @@ class EventsProvider extends React.Component {
   }
 
   componentDidMount() {
-    console.log("[EventsProvider] componentDidMount");
+    console.log("[EventsProvider] componentDidMount, great for making the first network calls");
 
     const requestConfig = {
       url: "http://localhost:4000/v1/events",
@@ -47,6 +47,14 @@ class EventsProvider extends React.Component {
           loading: false,
         });
       });
+  }
+
+  componentDidUpdate() {
+    console.log("[EventsProvider] componentDidUpdate, great for updating after state changes");
+  }
+
+  componentWillUnmount() {
+    console.log("[EventsProvider] componentWillUnmount, great for cleaning up after a component");
   }
 
   render() {

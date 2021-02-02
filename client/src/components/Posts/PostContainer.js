@@ -1,5 +1,5 @@
 import React from 'react';
-import { Grid, Typography } from "@material-ui/core";
+import { Button, Grid, Typography } from "@material-ui/core";
 import { makeStyles } from "@material-ui/core/styles";
 
 import Post from "./Post";
@@ -28,6 +28,9 @@ export default function PostContainer(props) {
     >
         <Grid item xs={12} lg={6} className={classes.title}>
           <Typography variant="h3">Featured Articles</Typography>
+      </Grid>
+      <Grid item xs={12} lg={6} className={classes.title}>
+          <Button onClick={() => props.buttonHandler()}>Featured Articles</Button>
         </Grid>
         <Grid container item direction="row" spacing={2} lg={8}>
           {props.posts.map((post) => (
