@@ -5,6 +5,7 @@ import {
   CardContent,
   makeStyles,
 } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -22,6 +23,7 @@ export default function Event(props) {
           <p>{props.event.details}</p>
           <p>{props.event.gameMaster}</p>
           <p>{props.event.date}</p>
+          <Link to='/event'>Go to Event!</Link>
         </CardContent>
       </CardActionArea>
     </Card>
