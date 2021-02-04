@@ -23,7 +23,7 @@ export default function Event(props) {
           <p>{props.event.details}</p>
           <p>{props.event.gameMaster}</p>
           <p>{props.event.date}</p>
-          <Link to='/event'>Go to Event!</Link>
+          <Link to={`/event/${props.event.id}`}>Go to Event!</Link>
         </CardContent>
       </CardActionArea>
     </Card>

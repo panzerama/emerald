@@ -11,7 +11,7 @@ function App() {
     <BrowserRouter>
       <LogoBar />
       <Switch>
-        <Route path="/event">
+        <Route path="/event/:id">
           {/** more specific to less specific */}
           <EventDetail />
         </Route>
