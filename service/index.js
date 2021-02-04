@@ -4,8 +4,8 @@ const port = 4000;
 const morgan = require('morgan');
 const cors = require('cors');
 
-const eventsRouter = require('./routes/eventsRouter');
-const postsRouter = require('./routes/postsRouter');
+const eventsRouter = require('./routers/eventsRouter');
+const postsRouter = require('./routers/postsRouter');
 
 app.use(morgan('tiny'));
 app.use(cors());
