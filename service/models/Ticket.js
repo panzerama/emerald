@@ -1,0 +1,1 @@
+// the display for a ticket
