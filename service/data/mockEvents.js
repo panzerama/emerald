@@ -1,50 +1,62 @@
 exports.upcomingEvents = [
   {
     id: 1,
-    name: "Love is in the Aaracokra",
+    eventName: "Love is in the Aaracokra",
     date: "2021-02-15T18:33:27-08:00",
     gameMaster: "Jason D Panzer",
+    ticketsAvailable: true,
     location: "Seattle, WA",
-    details: "A crazy bird-brained adventure",
+    description: "A crazy bird-brained adventure",
+    keywords: ['something']
   },
   {
     id: 2,
-    name: "Jurassic Park",
+    eventName: "Jurassic Park",
     date: "2021-02-22T18:33:27-08:00",
     gameMaster: "Allison Smith",
+    ticketsAvailable: true,
     location: "Seattle, WA",
-    details: "Dinosaurs",
+    description: "Dinosaurs",
+    keywords: ['something']
   },
   {
     id: 3,
-    name: "Saved by the Spell",
+    eventName: "Saved by the Spell",
     date: "2021-03-10T19:33:27-08:00",
     gameMaster: "Nikkie Silveira",
+    ticketsAvailable: true,
     location: "Bothell, WA",
-    details: "High school is dark magic",
+    description: "High school is dark magic",
+    keywords: ['something']
   },
   {
     id: 4,
-    name: "The Land of the Midnight Sun",
+    eventName: "The Land of the Midnight Sun",
     date: "2021-03-28T15:33:27-08:00",
     gameMaster: "Doug Johnson",
+    ticketsAvailable: false,
     location: "Olympia, WA",
-    details: "Vikings run amok",
+    description: "Vikings run amok",
+    keywords: ['something']
   },
   {
     id: 5,
-    name: "Love is in the Aaracokra",
+    eventName: "Love is in the Aaracokra",
     date: "2021-02-15T18:33:27-08:00",
     gameMaster: "Jason D Panzer",
+    ticketsAvailable: true,
     location: "Seattle, WA",
-    details: "A crazy bird-brained adventure",
+    description: "A crazy bird-brained adventure",
+    keywords: ['something']
   },
   {
     id: 6,
-    name: "Love is in the Aaracokra",
+    eventName: "Love is in the Aaracokra",
     date: "2021-02-15T18:33:27-08:00",
     gameMaster: "Jason D Panzer",
+    ticketsAvailable: true,
     location: "Seattle, WA",
-    details: "A crazy bird-brained adventure",
+    description: "A crazy bird-brained adventure",
+    keywords: ['something']
   },
 ];

@@ -1,6 +1,7 @@
-const mongoose, { Schema } = require('mongoose');
+const mongoose = require('mongoose');
 
-const postSchema = new Schema({
+const postSchema = new mongoose.Schema({
+  id: Number,
   title:  String,
   author: String,
   postedDate: { type: Date, default: Date.now },
@@ -12,4 +13,4 @@ const postSchema = new Schema({
 
 const Post = mongoose.model('Post', postSchema);
 
-export default Post;
+module.exports = Post;

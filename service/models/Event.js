@@ -1,6 +1,7 @@
-const mongoose, { Schema } = require('mongoose');
+const mongoose = require('mongoose');
 
-const eventSchema = new Schema({
+const eventSchema = new mongoose.Schema({
+  eventId: Number,
   eventName:  String,
   gameMaster: String,
   date: { type: Date, default: Date.now },
@@ -12,4 +13,4 @@ const eventSchema = new Schema({
 
 const Event = mongoose.model('Event', eventSchema);
 
-export default Event;
+module.exports = Event;
