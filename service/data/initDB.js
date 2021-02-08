@@ -1,3 +1,8 @@
+/** 
+ * Database initialization script. Run `node ./initDB.js`. Does not delete
+ * existing data.
+ */
+
 const mongoose = require('mongoose');
 require('dotenv').config({ path: '../.env' });
 
