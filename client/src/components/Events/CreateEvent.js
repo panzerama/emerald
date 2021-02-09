@@ -14,7 +14,7 @@ import {
 
 const defaultFormValues = {
   eventName: "Event Name",
-  gameMaster: "M. Mercer",
+  gameMaster: "",
   date: Date.now,
   location: "Seattle, WA",
   description: "Describe your session...",
@@ -37,12 +37,18 @@ export default function CreateEvent() {
   const classes = useStyles();
   const [eventFormValues, setEventFormValues] = useState(defaultFormValues);
 
-  const handleGameMasterChange = () => {
-    console.log("handle GM change");
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    console.log(`name ${name} and value ${value}`);
+    setEventFormValues({
+      ...eventFormValues,
+      [name]: value
+    });
+    console.log(eventFormValues);
   };
 
   return (
-    <form className={classes.root}>
+    <form className={classes.root} onSubmit={(event) => console.log(eventFormValues)}>
       <Grid
         container
         direction="column"
@@ -57,11 +63,11 @@ export default function CreateEvent() {
         <Grid item md={4}>
           <TextField
             required
-            id="outlined-required"
+            id="eventName"
             label="Required"
-            defaultValue={defaultFormValues.eventName}
+            name="eventName"
+            value={eventFormValues.eventName}
             variant="outlined"
-            margin="normal"
             className={classes.formControl}
             fullWidth
           />
@@ -79,7 +85,7 @@ export default function CreateEvent() {
               labelId="demo-simple-select-outlined-label"
               id="demo-simple-select-outlined"
               value={eventFormValues.gameMaster}
-              onChange={handleGameMasterChange}
+              onChange={handleInputChange}
               label="Game Master"
             >
               <MenuItem value="">
