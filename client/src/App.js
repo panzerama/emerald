@@ -5,17 +5,21 @@ import EntryPoint from "./components/EntryPoint";
 import EventsProvider from "./components/Events/EventsProvider";
 import PostsProvider from "./components/Posts/PostsProvider";
 import EventDetail from "./components/Events/EventDetail";
+import CreateEvent from "./components/Events/CreateEvent";
 
 function App() {
   return (
     <BrowserRouter>
       <LogoBar />
       <Switch>
+        <Route exact path="/event/create">
+          <CreateEvent />
+        </Route>
         <Route path="/event/:id">
           {/** more specific to less specific */}
           <EventDetail />
         </Route>
-        <Route path="/">
+        <Route exact path="/">
           <EntryPoint />
           {/** we encapsulate all of the event related logic in one component */}
           <EventsProvider />

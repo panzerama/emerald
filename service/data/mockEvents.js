@@ -1,13 +1,13 @@
 exports.upcomingEvents = [
   {
     id: 1,
-    eventName: "Love is in the Aaracokra",
-    date: "2021-02-15T18:33:27-08:00",
-    gameMaster: "Jason D Panzer",
-    ticketsAvailable: true,
-    location: "Seattle, WA",
-    description: "A crazy bird-brained adventure",
-    keywords: ['something']
+    "eventName": "Love is in the Aaracokra",
+    "date": "2021-02-15T18:33:27-08:00",
+    "gameMaster": "Jason D Panzer",
+    "ticketsAvailable": true,
+    "location": "Seattle, WA",
+    "description": "A crazy bird-brained adventure",
+    "keywords": ['something']
   },
   {
     id: 2,
@@ -41,7 +41,7 @@ exports.upcomingEvents = [
   },
   {
     id: 5,
-    eventName: "Love is in the Aaracokra",
+    "eventName": "Love is in the Aaracokra",
     date: "2021-02-15T18:33:27-08:00",
     gameMaster: "Jason D Panzer",
     ticketsAvailable: true,
@@ -51,7 +51,7 @@ exports.upcomingEvents = [
   },
   {
     id: 6,
-    eventName: "Love is in the Aaracokra",
+    "eventName": "Love is in the Aaracokra",
     date: "2021-02-15T18:33:27-08:00",
     gameMaster: "Jason D Panzer",
     ticketsAvailable: true,

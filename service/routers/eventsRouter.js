@@ -9,6 +9,17 @@ eventsRouter.route('/')
       if (err) { next(err) }
       else { res.send(events) }
     });
+  })
+  .post((req, res, next) => {
+    Event.create(req.body)
+      .then(event => {
+        const payload = { id: event._id };
+        res.send(event._id);
+      })
+      .catch(err => {
+        console.log(err);
+        next(err)
+      });
   });
 
 eventsRouter.route('/:id')
