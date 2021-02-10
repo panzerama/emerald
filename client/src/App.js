@@ -1,5 +1,6 @@
 import React from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
+import { Button } from '@material-ui/core';
 import LogoBar from "./components/LogoBar";
 import EntryPoint from "./components/EntryPoint";
 import EventsProvider from "./components/Events/EventsProvider";
@@ -14,6 +15,9 @@ function App() {
       <Switch>
         <Route exact path="/event/submitted">
           <div>Thanks for submitting your event!</div>
+          <Button color="primary" component={Link} to="/event/create">
+            Create another event
+          </Button>
         </Route>
         <Route exact path="/event/create">
           <CreateEvent />

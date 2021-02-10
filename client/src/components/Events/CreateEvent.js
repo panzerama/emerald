@@ -19,6 +19,7 @@ const defaultFormValues = {
   time: "",
   location: "",
   description: "",
+  keywords: ""
 };
 
 const useStyles = makeStyles((theme) => ({
@@ -88,18 +89,16 @@ export default function CreateEvent() {
 
           <FormControl
             className={classes.formControl}
+            variant="outlined"
             fullWidth
           >
-            <InputLabel id="gameMaster-label">
-              Game Master
-            </InputLabel>
+            <InputLabel id="gameMaster-label">GM</InputLabel>
             <Select
-              variant="outlined"
               labelId="gameMaster-label"
               name="gameMaster"
               value={eventFormValues.gameMaster}
               onChange={handleInputChange}
-              label="Game Master"
+              label="GM"
             >
               <MenuItem value="">
                 <em>None</em>
@@ -143,7 +142,7 @@ export default function CreateEvent() {
           <TextField
             required
             name="description"
-            label="Required"
+            label="Event Description"
             value={eventFormValues.description}
             multiline
             rows={4}
@@ -151,6 +150,18 @@ export default function CreateEvent() {
             className={classes.formControl}
             fullWidth
             onChange={handleInputChange}
+          />
+          <TextField
+            name="keywords"
+            label="Keywords"
+            value={eventFormValues.keywords}
+            multiline
+            rows={4}
+            variant="outlined"
+            className={classes.formControl}
+            fullWidth
+            onChange={handleInputChange}
+            helperText="Comma separated values, please!"
           />
           <Button
             variant="contained"

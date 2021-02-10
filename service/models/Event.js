@@ -5,7 +5,6 @@ const eventSchema = new mongoose.Schema({
   eventName:  String,
   gameMaster: String,
   date: { type: Date, default: Date.now },
-  ticketsAvailable: Boolean,
   location: String,
   description: String,
   keywords: [String]
