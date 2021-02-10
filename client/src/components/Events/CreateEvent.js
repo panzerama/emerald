@@ -18,28 +18,30 @@ const defaultFormValues = {
   gameMaster: "",
   date: "",
   time: "",
+  timeZone: "",
   location: "",
   description: "",
-  keywords: ""
+  keywords: "",
 };
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
     flexDirection: "column",
-    alignItems: 'center'
+    alignItems: "center",
   },
   formControl: {
-    margin: theme.spacing(2),
+    margin: theme.spacing(1),
   },
   title: {
     margin: theme.spacing(1),
   },
   dateRow: {
     display: "flex",
+    width: '100%',
     flexDirection: "row",
-    justifyContent: "space-evenly"
-  }
+    justifyContent: "flex-start",
+  },
 }));
 
 export default function CreateEvent() {
@@ -52,16 +54,16 @@ export default function CreateEvent() {
     console.log(`name ${name} and value ${value}`);
     setEventFormValues({
       ...eventFormValues,
-      [name]: value
+      [name]: value,
     });
     console.log(eventFormValues);
   };
 
   const handleSubmit = (event) => {
-    event.preventDefault()
+    event.preventDefault();
     const requestConfig = {
-      url: 'http://localhost:4000/v1/events',
-      method: 'post',
+      url: "http://localhost:4000/v1/events",
+      method: "post",
       headers: { "Content-Type": "application/json" },
       data: {
         eventName: eventFormValues.eventName,
@@ -70,9 +72,9 @@ export default function CreateEvent() {
         time: eventFormValues.time,
         location: eventFormValues.location,
         description: eventFormValues.description,
-        keywords: eventFormValues.keywords
-      }
-    }
+        keywords: eventFormValues.keywords,
+      },
+    };
 
     axios(requestConfig)
       .then((response) => {
@@ -82,16 +84,16 @@ export default function CreateEvent() {
       .catch((err) => {
         console.log(`We should really handle the error: ${err}`);
       });
-  }
+  };
 
   if (success) {
-    return <Redirect to='/event/submitted' />
+    return <Redirect to="/event/submitted" />;
   } else {
     return (
       <Container maxWidth="sm">
         <Typography className={classes.title} variant="h3">
           Create a New Event
-          </Typography>
+        </Typography>
         <form
           className={classes.root}
           onSubmit={handleSubmit}
@@ -143,6 +145,7 @@ export default function CreateEvent() {
               }}
               variant="outlined"
               onChange={handleInputChange}
+              fullWidth
             />
 
             <TextField
@@ -159,7 +162,33 @@ export default function CreateEvent() {
               }}
               variant="outlined"
               onChange={handleInputChange}
+              fullWidth
             />
+
+            <FormControl
+              className={classes.formControl}
+              variant="outlined"
+              fullWidth
+            >
+              <InputLabel id="timeZone-label">Time Zone</InputLabel>
+              <Select
+                labelId="timeZone-label"
+                name="timeZone"
+                value={eventFormValues.timeZone}
+                onChange={handleInputChange}
+                label="Time Zone"
+              >
+                <MenuItem value="">
+                  <em>None</em>
+                </MenuItem>
+                <MenuItem value={"-1000"}>Hawaii</MenuItem>
+                <MenuItem value={"-0900"}>Alaska</MenuItem>
+                <MenuItem value={"-0800"}>Pacific</MenuItem>
+                <MenuItem value={"-0700"}>Mountain</MenuItem>
+                <MenuItem value={"-0600"}>Central</MenuItem>
+                <MenuItem value={"-0500"}>Eastern</MenuItem>
+              </Select>
+            </FormControl>
           </div>
           <TextField
             required

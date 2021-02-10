@@ -1,6 +1,8 @@
 const express = require('express');
 const eventsRouter = express.Router();
 
+const eventsController = require('../controllers/eventsController');
+
 const Event = require('../models/Event');
 
 eventsRouter.route('/')
@@ -10,20 +12,7 @@ eventsRouter.route('/')
       else { res.send(events) }
     });
   })
-  .post((req, res, next) => {
-    // Transmuting the date and time
-    // Checking that date and time are in the future
-    // Parsing the keywords out
-    Event.create(req.body)
-      .then(event => {
-        const payload = { id: event._id };
-        res.send(event._id);
-      })
-      .catch(err => {
-        console.log(err);
-        next(err)
-      });
-  });
+  .post(eventsController.createEvent);
 
 eventsRouter.route('/:id')
   .get((req, res, next) => {
