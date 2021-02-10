@@ -7,11 +7,10 @@ import Event from './Event';
 export default function EventDetail(props) {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
-  const [eventId, setEventId] = useState(id)
 
   useEffect(() => {
     const config = {
-      url: `http://localhost:4000/v1/events/${eventId}`,
+      url: `http://localhost:4000/v1/events/${id}`,
       method: 'GET',
       headers: { "Content-Type": "application/json" },
     }
@@ -20,7 +19,7 @@ export default function EventDetail(props) {
     }).catch((err) => {
       console.log('error in EventDetail useEffect');
     })
-  }, [eventId]);
+  }, [id]);
 
   return <Event event={event} />
 }

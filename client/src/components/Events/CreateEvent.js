@@ -6,31 +6,38 @@ import {
   MenuItem,
   Select,
   TextField,
-  Grid,
+  Container,
   Button,
   makeStyles,
   Typography,
 } from "@material-ui/core";
 
 const defaultFormValues = {
-  eventName: "Event Name",
+  eventName: "",
   gameMaster: "",
-  date: Date.now,
-  location: "Seattle, WA",
-  description: "Describe your session...",
+  date: "2021-02-11",
+  time: "06:30",
+  location: "",
+  description: "",
 };
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: "flex",
+    flexDirection: "column",
+    alignItems: 'center'
   },
   formControl: {
     margin: theme.spacing(2),
-    flexGrow: 1,
   },
   title: {
     margin: theme.spacing(1),
   },
+  dateRow: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-evenly"
+  }
 }));
 
 export default function CreateEvent() {
@@ -48,110 +55,94 @@ export default function CreateEvent() {
   };
 
   return (
-    <form className={classes.root} onSubmit={(event) => console.log(eventFormValues)}>
-      <Grid
-        container
-        direction="column"
-        className={classes.formGrid}
-        spacing={2}
-      >
-        <Grid item>
-          <Typography className={classes.title} variant="h3">
-            Create a New Event
+    <Container maxWidth="sm">
+      <Typography className={classes.title} variant="h3">
+        Create a New Event
           </Typography>
-        </Grid>
-        <Grid item md={4}>
-          <TextField
-            required
-            id="eventName"
-            label="Required"
-            name="eventName"
-            value={eventFormValues.eventName}
-            variant="outlined"
-            className={classes.formControl}
-            fullWidth
-          />
-        </Grid>
-        <Grid item md={4}>
-          <FormControl
-            variant="outlined"
-            className={classes.formControl}
-            fullWidth
-          >
-            <InputLabel id="demo-simple-select-outlined-label">
-              Game Master
+      <form className={classes.root} onSubmit={(event) => console.log(eventFormValues)}>
+        <TextField
+          required
+          variant="outlined"
+          id="eventName"
+          label="Required"
+          name="eventName"
+          value={eventFormValues.eventName}
+          className={classes.formControl}
+          fullWidth
+        />
+
+        <FormControl
+          className={classes.formControl}
+          fullWidth
+        >
+          <InputLabel id="demo-simple-select-outlined-label">
+            Game Master
             </InputLabel>
-            <Select
-              labelId="demo-simple-select-outlined-label"
-              id="demo-simple-select-outlined"
-              value={eventFormValues.gameMaster}
-              onChange={handleInputChange}
-              label="Game Master"
-            >
-              <MenuItem value="">
-                <em>None</em>
-              </MenuItem>
-              <MenuItem value={"Allison"}>Allison</MenuItem>
-              <MenuItem value={"Doug"}>Doug</MenuItem>
-              <MenuItem value={"Json"}>Json</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
-        <Grid container item spacing={2}>
-          <Grid item md={2}>
-            <TextField
-              id="date"
-              label="Date"
-              type="date"
-              defaultValue="2017-05-24"
-              className={classes.formControl}
-              InputLabelProps={{
-                shrink: true,
-              }}
-              variant="outlined"
-            />
-          </Grid>
-          <Grid item md={2}>
-            <TextField
-              id="time"
-              label="Start time"
-              type="time"
-              defaultValue="07:30"
-              className={classes.formControl}
-              InputLabelProps={{
-                shrink: true,
-              }}
-              inputProps={{
-                step: 300, // 5 min
-              }}
-              variant="outlined"
-            />
-          </Grid>
-        </Grid>
-        <Grid item md={4}>
-          <TextField
-            required
-            id="outlined-required"
-            label="Required"
-            defaultValue="Describe the session..."
-            multiline
-            rows={4}
-            variant="outlined"
-            className={classes.formControl}
-            fullWidth
-          />
-        </Grid>
-        <Grid item md={4}>
-          <Button
-            variant="contained"
-            color="primary"
-            type="submit"
-            className={classes.formControl}
+          <Select
+          variant="outlined"
+            labelId="demo-simple-select-outlined-label"
+            id="demo-simple-select-outlined"
+            value={eventFormValues.gameMaster}
+            onChange={handleInputChange}
+            label="Game Master"
           >
-            Submit
+            <MenuItem value="">
+              <em>None</em>
+            </MenuItem>
+            <MenuItem value={"Allison"}>Allison</MenuItem>
+            <MenuItem value={"Doug"}>Doug</MenuItem>
+            <MenuItem value={"Json"}>Json</MenuItem>
+          </Select>
+        </FormControl>
+
+        <div className={classes.dateRow}>
+        <TextField
+          id="date"
+          label="Date"
+          type="date"
+          defaultValue={eventFormValues.date}
+          className={classes.formControl}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          variant="outlined"
+        />
+
+        <TextField
+          id="time"
+          label="Start time"
+          type="time"
+          defaultValue={eventFormValues.time}
+          className={classes.formControl}
+          InputLabelProps={{
+            shrink: true,
+          }}
+          inputProps={{
+            step: 300, // 5 min
+          }}
+          variant="outlined"
+        />
+        </div>
+        <TextField
+          required
+          id="outlined-required"
+          label="Required"
+          defaultValue="Describe the session..."
+          multiline
+          rows={4}
+          variant="outlined"
+          className={classes.formControl}
+          fullWidth
+        />
+        <Button
+          variant="contained"
+          color="primary"
+          type="submit"
+          className={classes.formControl}
+        >
+          Submit
           </Button>
-        </Grid>
-      </Grid>
-    </form>
+      </form>
+    </Container>
   );
 }
