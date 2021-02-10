@@ -33,6 +33,7 @@ db.on('close', () => { console.log("MongoDB connection closed") });
 
 app.use(morgan('tiny'));
 app.use(cors());
+app.use(express.json())
 
 // Routers
 

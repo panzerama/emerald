@@ -11,6 +11,7 @@ import {
   makeStyles,
   Typography,
 } from "@material-ui/core";
+import axios from "axios";
 
 const defaultFormValues = {
   eventName: "",
@@ -58,8 +59,29 @@ export default function CreateEvent() {
 
   const handleSubmit = (event) => {
     event.preventDefault()
-    console.log("Handled!")
-    setSuccess(true)
+    const requestConfig = {
+      url: 'http://localhost:4000/v1/events',
+      method: 'post',
+      headers: { "Content-Type": "application/json" },
+      data: {
+        eventName: eventFormValues.eventName,
+        gameMaster: eventFormValues.gameMaster,
+        date: eventFormValues.date,
+        time: eventFormValues.time,
+        location: eventFormValues.location,
+        description: eventFormValues.description,
+        keywords: eventFormValues.keywords
+      }
+    }
+
+    axios(requestConfig)
+      .then((response) => {
+        setSuccess(true);
+        console.log(`Item Created ${response.data}`);
+      })
+      .catch((err) => {
+        console.log(`We should really handle the error: ${err}`);
+      });
   }
 
   if (success) {

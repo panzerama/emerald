@@ -11,6 +11,9 @@ eventsRouter.route('/')
     });
   })
   .post((req, res, next) => {
+    // Transmuting the date and time
+    // Checking that date and time are in the future
+    // Parsing the keywords out
     Event.create(req.body)
       .then(event => {
         const payload = { id: event._id };
