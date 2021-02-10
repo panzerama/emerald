@@ -12,6 +12,9 @@ function App() {
     <BrowserRouter>
       <LogoBar />
       <Switch>
+        <Route exact path="/event/submitted">
+          <div>Thanks for submitting your event!</div>
+        </Route>
         <Route exact path="/event/create">
           <CreateEvent />
         </Route>

@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-
+import { Redirect } from "react-router-dom";
 import {
   FormControl,
   InputLabel,
@@ -15,8 +15,8 @@ import {
 const defaultFormValues = {
   eventName: "",
   gameMaster: "",
-  date: "2021-02-11",
-  time: "06:30",
+  date: "",
+  time: "",
   location: "",
   description: "",
 };
@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
 export default function CreateEvent() {
   const classes = useStyles();
   const [eventFormValues, setEventFormValues] = useState(defaultFormValues);
+  const [success, setSuccess] = useState(false);
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -54,95 +55,114 @@ export default function CreateEvent() {
     console.log(eventFormValues);
   };
 
-  return (
-    <Container maxWidth="sm">
-      <Typography className={classes.title} variant="h3">
-        Create a New Event
+  const handleSubmit = (event) => {
+    event.preventDefault()
+    console.log("Handled!")
+    setSuccess(true)
+  }
+
+  if (success) {
+    return <Redirect to='/event/submitted' />
+  } else {
+    return (
+      <Container maxWidth="sm">
+        <Typography className={classes.title} variant="h3">
+          Create a New Event
           </Typography>
-      <form className={classes.root} onSubmit={(event) => console.log(eventFormValues)}>
-        <TextField
-          required
-          variant="outlined"
-          id="eventName"
-          label="Required"
-          name="eventName"
-          value={eventFormValues.eventName}
-          className={classes.formControl}
-          fullWidth
-        />
-
-        <FormControl
-          className={classes.formControl}
-          fullWidth
+        <form
+          className={classes.root}
+          onSubmit={handleSubmit}
+          id="eventCreateForm"
         >
-          <InputLabel id="demo-simple-select-outlined-label">
-            Game Master
-            </InputLabel>
-          <Select
-          variant="outlined"
-            labelId="demo-simple-select-outlined-label"
-            id="demo-simple-select-outlined"
-            value={eventFormValues.gameMaster}
+          <TextField
+            required
+            variant="outlined"
+            id="eventName"
+            label="Required"
+            name="eventName"
+            value={eventFormValues.eventName}
+            className={classes.formControl}
             onChange={handleInputChange}
-            label="Game Master"
+            fullWidth
+          />
+
+          <FormControl
+            className={classes.formControl}
+            fullWidth
           >
-            <MenuItem value="">
-              <em>None</em>
-            </MenuItem>
-            <MenuItem value={"Allison"}>Allison</MenuItem>
-            <MenuItem value={"Doug"}>Doug</MenuItem>
-            <MenuItem value={"Json"}>Json</MenuItem>
-          </Select>
-        </FormControl>
+            <InputLabel id="gameMaster-label">
+              Game Master
+            </InputLabel>
+            <Select
+              variant="outlined"
+              labelId="gameMaster-label"
+              name="gameMaster"
+              value={eventFormValues.gameMaster}
+              onChange={handleInputChange}
+              label="Game Master"
+            >
+              <MenuItem value="">
+                <em>None</em>
+              </MenuItem>
+              <MenuItem value={"Allison"}>Allison</MenuItem>
+              <MenuItem value={"Doug"}>Doug</MenuItem>
+              <MenuItem value={"Json"}>Json</MenuItem>
+            </Select>
+          </FormControl>
 
-        <div className={classes.dateRow}>
-        <TextField
-          id="date"
-          label="Date"
-          type="date"
-          defaultValue={eventFormValues.date}
-          className={classes.formControl}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          variant="outlined"
-        />
+          <div className={classes.dateRow}>
+            <TextField
+              name="date"
+              label="Date"
+              type="date"
+              value={eventFormValues.date}
+              className={classes.formControl}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              variant="outlined"
+              onChange={handleInputChange}
+            />
 
-        <TextField
-          id="time"
-          label="Start time"
-          type="time"
-          defaultValue={eventFormValues.time}
-          className={classes.formControl}
-          InputLabelProps={{
-            shrink: true,
-          }}
-          inputProps={{
-            step: 300, // 5 min
-          }}
-          variant="outlined"
-        />
-        </div>
-        <TextField
-          required
-          id="outlined-required"
-          label="Required"
-          defaultValue="Describe the session..."
-          multiline
-          rows={4}
-          variant="outlined"
-          className={classes.formControl}
-          fullWidth
-        />
-        <Button
-          variant="contained"
-          color="primary"
-          type="submit"
-          className={classes.formControl}
-        >
-          Submit
+            <TextField
+              name="time"
+              label="Start time"
+              type="time"
+              value={eventFormValues.time}
+              className={classes.formControl}
+              InputLabelProps={{
+                shrink: true,
+              }}
+              inputProps={{
+                step: 300, // 5 min
+              }}
+              variant="outlined"
+              onChange={handleInputChange}
+            />
+          </div>
+          <TextField
+            required
+            name="description"
+            label="Required"
+            value={eventFormValues.description}
+            multiline
+            rows={4}
+            variant="outlined"
+            className={classes.formControl}
+            fullWidth
+            onChange={handleInputChange}
+          />
+          <Button
+            variant="contained"
+            color="primary"
+            type="submit"
+            className={classes.formControl}
+            form="eventCreateForm"
+          >
+            Submit
           </Button>
-      </form>
-    </Container>
-  );
+        </form>
+      </Container>
+    );
+  }
 }
