@@ -1,6 +1,6 @@
 import React from "react";
-import { Grid, Typography } from "@material-ui/core";
-import { makeStyles } from '@material-ui/core/styles';
+import { Button, Grid, Typography, makeStyles } from "@material-ui/core";
+import { Link } from 'react-router-dom';
 
 import EventsList from "./EventsList";
 
@@ -20,6 +20,11 @@ export default function EventsContainer(props) {
       <Grid container direction="column">
         <Grid item className={classes.featuredTitle}>
             <Typography variant="h3">Upcoming Games</Typography>
+        </Grid>
+        <Grid item md={4}>
+          <Link to='/event/create'>
+            <Button>Create Event</Button>
+            </Link>
         </Grid>
         <EventsList events={props.events}/>
       </Grid>

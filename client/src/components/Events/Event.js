@@ -19,8 +19,8 @@ export default function Event(props) {
     <Card className={classes.root}>
       <CardActionArea>
         <CardContent>
-          <h2>{props.event.name}</h2>
-          <p>{props.event.details}</p>
+          <h2>{props.event.eventName}</h2>
+          <p>{props.event.description}</p>
           <p>{props.event.gameMaster}</p>
           <p>{props.event.date}</p>
           <Link to={`/event/${props.event.id}`}>Go to Event!</Link>

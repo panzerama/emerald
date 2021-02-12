@@ -4,10 +4,9 @@ import { useParams } from 'react-router-dom';
 
 import Event from './Event';
 
-export default function EventDetail() {
-  const [ event, setEvent ] = useState(null);
-
+export default function EventDetail(props) {
   const { id } = useParams();
+  const [event, setEvent] = useState(null);
 
   useEffect(() => {
     const config = {

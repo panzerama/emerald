@@ -24,17 +24,17 @@ export default function PostContainer(props) {
       direction="column"
       spacing={1}
       alignItems='center'
-      lg={12}
+      md={12}
     >
-        <Grid item xs={12} lg={6} className={classes.title}>
+        <Grid item xs={12} md={6} className={classes.title}>
           <Typography variant="h3">Featured Articles</Typography>
       </Grid>
-      <Grid item xs={12} lg={6} className={classes.title}>
+      <Grid item xs={12} md={6} className={classes.title}>
           <Button onClick={() => props.buttonHandler()}>Featured Articles</Button>
         </Grid>
-        <Grid container item direction="row" spacing={2} lg={8}>
+        <Grid container item direction="row" spacing={2} md={8}>
           {props.posts.map((post) => (
-            <Grid key={post.id} item xs={12} lg={6}>
+            <Grid key={post.id} item xs={12} md={6}>
               <Post post={post} />
             </Grid>
           ))}

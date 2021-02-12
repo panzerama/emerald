@@ -1,10 +1,14 @@
 const express = require("express");
 const postsRouter = express.Router();
 
-const { posts } = require("../data/mockPosts");
+const Post = require('../models/Post');
 
-postsRouter.route("/").get((req, res) => {
-  res.json(posts);
+postsRouter.route("/")
+  .get((req, res, next) => {
+    Post.find({}, (err, posts) => {
+      if (err) { next(err) }
+      res.send(posts);
+    });
 });
 
 module.exports = postsRouter;
