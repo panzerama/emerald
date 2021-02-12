@@ -9,13 +9,22 @@ const useStyles = makeStyles((theme) => ({
     backgroundImage: `url(${dragonBanner})`,
     height: '60vh',
     display: 'flex',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   headline: {
     margin: theme.spacing(3),
+    display: 'flex',
+    justifyContent: 'space-between',
+    flexDirection: 'column',
   },
   title: {
     color: 'white',
+    width: '50%',
+    textShadow: '1px 1px 2px #28903A',
+  },
+  subtitle: {
+    color: 'white',
+    margin: theme.spacing(2),
   }
 }));
 
@@ -24,7 +33,18 @@ export default function Banner() {
   return (
     <Box className={classes.root}>
       <Container className={classes.headline}>
-        <Typography variant='h1' className={classes.title}>Emerald City Game Masters Guild</Typography>
+        <Typography
+          variant='h1'
+          className={classes.title}
+        >
+          Emerald City Game Masters Guild
+        </Typography>
+        <Typography
+          variant='h4'
+          className={classes.subtitle}
+        >
+          Professional Game Masters fostering safe &amp; inclusive tabletop RPG experiences
+        </Typography>
       </Container>
     </Box>
   )
