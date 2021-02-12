@@ -14,29 +14,36 @@ const useStyles = makeStyles((theme) => ({
     flexGrow: 1,
     padding: theme.spacing(2),
   },
-  card: {
+  yourPathHeadline: {
     height: "150px",
-    padding: theme.spacing(2)
+    margin: theme.spacing(2)
   },
+  pathOptionsGroup: {
+    height: "25vh",
+  },
+  card: {
+    height: '100%',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between'
+  }
 }));
 
 export default function YourPath() {
   const classes = useStyles();
   return (
-    <Grid container justify="flex-start" className={classes.root} spacing={1}>
+    <Grid container fluid justify="flex-start" className={classes.root} spacing={1}>
       <Grid item xs={10}>
-        <Card className={classes.card}>
-          <CardContent>
-            <Typography variant="h3">
-              Where are you in your adventure?
-            </Typography>
-            <Typography>
-              We all have different levels of experience with gaming. Tell us
-              more about yours and we'll help you find the right gaming
-              experience.
-            </Typography>
-          </CardContent>
-        </Card>
+        <div className={classes.yourPathHeadline}>
+        <Typography variant="h3">
+          Where are you in your adventure?
+        </Typography>
+        <Typography>
+            We all have different levels of experience with gaming. Tell us
+            more about yours and we'll help you find the right gaming
+            experience.
+        </Typography>
+        </div>
       </Grid>
       <Grid
         container
@@ -45,6 +52,7 @@ export default function YourPath() {
         direction="row"
         spacing={5}
         justify="flex-end"
+        className={classes.pathOptionsGroup}
       >
         <Grid item xs={3}>
           <Card className={classes.card}>

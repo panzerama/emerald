@@ -24,9 +24,12 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     backgroundColor: Colors.darkGreen,
   },
-  buttonImage: {
+  icon: {
     width: '40px',
     height: '40px',
+  },
+  navOption: {
+    margin: theme.spacing(2),
   }
 }));
 
@@ -40,13 +43,15 @@ export default function LogoBar(props) {
           className={classes.menuButton}
           aria-label="menu"
         >
-          <img src={emeraldLogo} className={classes.buttonImage} alt='Site Logo'/>
+          <img src={emeraldLogo} className={classes.icon} alt='Site Logo'/>
         </IconButton>
         <Typography variant="h6" className={classes.title}>
           Emerald City Game Masters Guild
         </Typography>
-        <Button color="inherit">Login</Button>
-        <Button color="inherit">Sign Up</Button>
+        <Button className={classes.navOption} variant="outlined" color="inherit">Find a Game</Button>
+        <Button className={classes.navOption} variant="outlined" color="inherit">About the Guild</Button>
+        <Button className={classes.navOption} variant="outlined" color="inherit">Login</Button>
+        <Button className={classes.navOption} variant="outlined" color="inherit">Sign Up</Button>
       </Toolbar>
     </AppBar>
   );

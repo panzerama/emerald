@@ -1,16 +1,34 @@
 import React from "react";
-import { Grid } from "@material-ui/core";
+import { GridList, GridListTile, makeStyles } from "@material-ui/core";
 
 import Event from "./Event";
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    justifyContent: 'flex-start',
+    overflow: 'hidden',
+    backgroundColor: theme.palette.background.paper,
+  },
+  gridList: {
+    flexWrap: 'nowrap',
+    // Promote the list into his own layer on Chrome. This cost memory but helps keeping high FPS.
+    transform: 'translateZ(0)',
+  },
+}));
+
 export default function EventsList(props) {
+  const classes = useStyles();
   return (
-    <Grid container item direction="row" wrap="nowrap" spacing={1}>
+    <div className={classes.root}> 
+      <GridList className={classes.gridList} cols={7}>
       {props.events.map((event) => (
-        <Grid key={event.id} item xs={2}>
+        <GridListTile key={event.id}>
           <Event event={event} />
-        </Grid>
+        </GridListTile>
       ))}
-    </Grid>
+      </GridList>
+      </div>
   );
 }
