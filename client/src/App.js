@@ -5,12 +5,16 @@ import FrontPage from './views/FrontPage';
 import EventDetailPage from "./views/EventDetailPage";
 import CreateEvent from "./components/Events/CreateEvent";
 import EventSubmitted from "./components/Events/EventSubmitted";
+import Banner from "./components/Banner";
 
 function App() {
   return (
     <BrowserRouter>
       <LogoBar />
+      <Banner />
       <Switch>
+        {/** workitem refactor events into sub-router */}
+        {/** https://reactrouter.com/web/example/nesting */}
         <Route exact path="/event/submitted">
           <EventSubmitted />
         </Route>

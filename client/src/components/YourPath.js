@@ -20,7 +20,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EntryPoint() {
+export default function YourPath() {
   const classes = useStyles();
   return (
     <Grid container justify="flex-start" className={classes.root} spacing={1}>
