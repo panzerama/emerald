@@ -1,12 +1,10 @@
 import React from "react";
-import { BrowserRouter, Switch, Route, Link } from "react-router-dom";
-import { Button } from '@material-ui/core';
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 import LogoBar from "./components/LogoBar";
-import EntryPoint from "./components/EntryPoint";
-import EventsProvider from "./components/Events/EventsProvider";
-import PostsProvider from "./components/Posts/PostsProvider";
-import EventDetail from "./components/Events/EventDetail";
+import FrontPage from './views/FrontPage';
+import EventDetailPage from "./views/EventDetailPage";
 import CreateEvent from "./components/Events/CreateEvent";
+import EventSubmitted from "./components/Events/EventSubmitted";
 
 function App() {
   return (
@@ -14,23 +12,16 @@ function App() {
       <LogoBar />
       <Switch>
         <Route exact path="/event/submitted">
-          <div>Thanks for submitting your event!</div>
-          <Button color="primary" component={Link} to="/event/create">
-            Create another event
-          </Button>
+          <EventSubmitted />
         </Route>
         <Route exact path="/event/create">
           <CreateEvent />
         </Route>
         <Route path="/event/:id">
-          {/** more specific to less specific */}
-          <EventDetail />
+          <EventDetailPage />
         </Route>
         <Route exact path="/">
-          <EntryPoint />
-          {/** we encapsulate all of the event related logic in one component */}
-          <EventsProvider />
-          <PostsProvider />
+          <FrontPage />
         </Route>
       </Switch>
     </BrowserRouter>
