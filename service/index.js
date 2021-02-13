@@ -38,7 +38,7 @@ app.use(express.json())
 
 app.use('/v1/events', eventsRouter);
 app.use('/v1/posts', postsRouter);
-app.use('/v1/user', usersRouter);
+app.use('/v1/users', usersRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
