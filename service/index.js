@@ -10,8 +10,6 @@ const cors = require('cors');
 const eventsRouter = require('./routers/eventsRouter');
 const postsRouter = require('./routers/postsRouter');
 
-// Setting up mongoose connection
-// Example code from https://mzl.la/39Ngmr4
 const mongoose = require('mongoose');
 
 const user = process.env.MONGO_USER;
