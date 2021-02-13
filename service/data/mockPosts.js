@@ -1,6 +1,5 @@
 exports.posts = [
   {
-    id: 1,
     title: 'Lorem',
     author: 'Json',
     postedDate: new Date(1776, 6, 4, 12, 30, 0, 0),
@@ -10,7 +9,6 @@ exports.posts = [
     keywords: ['nunc', 'sagittis'],
   },
   {
-    id: 2,
     title: 'Ipsum',
     author: 'Doug',
     postedDate: new Date(1776, 6, 4, 12, 30, 0, 0),
@@ -20,7 +18,6 @@ exports.posts = [
     keywords: ['Voluptat'],
   },
   {
-    id: 3,
     title: 'Dolor',
     author: 'Reecie',
     postedDate: new Date(1776, 6, 4, 12, 30, 0, 0),
@@ -30,7 +27,6 @@ exports.posts = [
     keywords: ['faucibus', 'purus'],
   },
   {
-    id: 4,
     title: 'Sit Amet',
     author: 'Ian',
     postedDate: new Date(1776, 6, 4, 12, 30, 0, 0),
@@ -40,7 +36,6 @@ exports.posts = [
     keywords: ['malesuada', 'pellentesque'],
   },
   {
-    id: 5,
     title: 'Consectetur Adip',
     author: 'Dee',
     postedDate: new Date(1776, 6, 4, 12, 30, 0, 0),

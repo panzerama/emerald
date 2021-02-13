@@ -8,9 +8,11 @@ require('dotenv').config({ path: '../.env' });
 
 const mockPosts = require('./mockPosts');
 const mockEvents = require('./mockEvents');
+const mockUsers = require('./mockUsers');
 
 const Post = require('../models/Post');
 const Event = require('../models/Event');
+const User = require('../models/User');
 
 mockPosts.posts.forEach((post) => {
   Post.create(post).catch(err => console.log(err));
@@ -18,6 +20,10 @@ mockPosts.posts.forEach((post) => {
 
 mockEvents.upcomingEvents.forEach((event) => {
   Event.create(event).catch(err => console.log(err));
+});
+
+mockUsers.users.forEach((user) => {
+  User.create(user).catch(err => console.log(err));
 });
 
 const user = process.env.MONGO_USER;

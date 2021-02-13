@@ -9,6 +9,7 @@ const cors = require('cors');
 
 const eventsRouter = require('./routers/eventsRouter');
 const postsRouter = require('./routers/postsRouter');
+const usersRouter = require('./routers/usersRouter');
 
 const mongoose = require('mongoose');
 
@@ -37,6 +38,7 @@ app.use(express.json())
 
 app.use('/v1/events', eventsRouter);
 app.use('/v1/posts', postsRouter);
+app.use('/v1/user', usersRouter);
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`);
