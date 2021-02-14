@@ -6,6 +6,7 @@ import EventDetailPage from './views/EventDetailPage';
 import CreateEvent from './components/Events/CreateEvent';
 import EventSubmitted from './components/Events/EventSubmitted';
 import Banner from './components/Banner';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -24,8 +25,9 @@ function App() {
         <Route path="/event/:id">
           <EventDetailPage />
         </Route>
-        <Route path="/login" />
-
+        <Route path="/login">
+          <Login />
+        </Route>
         <Route exact path="/">
           <FrontPage />
         </Route>
