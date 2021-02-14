@@ -7,6 +7,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 
 import Colors from '../styles/colors';
 import emeraldLogo from '../images/emerald-logo.png';
@@ -50,7 +51,15 @@ export default function LogoBar() {
         </Typography>
         <Button className={classes.navOption} variant="outlined" color="inherit">Find a Game</Button>
         <Button className={classes.navOption} variant="outlined" color="inherit">About the Guild</Button>
-        <Button className={classes.navOption} variant="outlined" color="inherit">Login</Button>
+        <Button
+          className={classes.navOption}
+          variant="outlined"
+          color="inherit"
+          component={Link}
+          to="/login"
+        >
+          Login
+        </Button>
         <Button className={classes.navOption} variant="outlined" color="inherit">Sign Up</Button>
       </Toolbar>
     </AppBar>
