@@ -21,7 +21,10 @@ exports.createEvent = (req, res, next) => {
     res.send({ error: 'Event date must be in the future' });
   }
 
-  const keywordArr = keywords.split(',');
+  let keywordArr = [];
+  if (typeof (keywords) === 'string') {
+    keywordArr = keywords.split(',');
+  }
 
   const event = {
     eventName: req.body.eventName,
