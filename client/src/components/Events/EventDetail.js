@@ -2,9 +2,9 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
 
-import Event from '../components/Events/Event';
+import Event from './Event';
 
-export default function EventDetailPage() {
+export default function EventDetail() {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
 
