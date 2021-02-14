@@ -6,8 +6,8 @@ import {
   CardContent,
   CardActions,
   Button,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,18 +15,18 @@ const useStyles = makeStyles((theme) => ({
     padding: theme.spacing(2),
   },
   yourPathHeadline: {
-    height: "150px",
-    margin: theme.spacing(2)
+    height: '150px',
+    margin: theme.spacing(2),
   },
   pathOptionsGroup: {
-    height: "25vh",
+    height: '25vh',
   },
   card: {
     height: '100%',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between'
-  }
+    justifyContent: 'space-between',
+  },
 }));
 
 export default function YourPath() {
@@ -35,14 +35,14 @@ export default function YourPath() {
     <Grid container fluid justify="flex-start" className={classes.root} spacing={1}>
       <Grid item xs={10}>
         <div className={classes.yourPathHeadline}>
-        <Typography variant="h3">
-          Where are you in your adventure?
-        </Typography>
-        <Typography>
+          <Typography variant="h3">
+            Where are you in your adventure?
+          </Typography>
+          <Typography>
             We all have different levels of experience with gaming. Tell us
             more about yours and we'll help you find the right gaming
             experience.
-        </Typography>
+          </Typography>
         </div>
       </Grid>
       <Grid
@@ -78,7 +78,7 @@ export default function YourPath() {
               </Typography>
             </CardContent>
             <CardActions>
-            <Button size="medium" color="primary">
+              <Button size="medium" color="primary">
                 Get Started
               </Button>
             </CardActions>
@@ -89,12 +89,12 @@ export default function YourPath() {
             <CardContent>
               <Typography variant="h4">Legend</Typography>
               <Typography>
-                Adventure is your middle name. You want to broaden your 
+                Adventure is your middle name. You want to broaden your
                 horizons.
               </Typography>
             </CardContent>
             <CardActions>
-            <Button size="medium" color="primary">
+              <Button size="medium" color="primary">
                 Get Started
               </Button>
             </CardActions>

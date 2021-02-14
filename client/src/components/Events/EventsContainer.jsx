@@ -1,8 +1,10 @@
-import React from "react";
-import { Button, Grid, Typography, makeStyles } from "@material-ui/core";
+import React from 'react';
+import {
+  Button, Grid, Typography, makeStyles,
+} from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-import EventsList from "./EventsList";
+import EventsList from './EventsList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -10,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
   },
   featuredTitle: {
     margin: theme.spacing(1),
-  }
+  },
 }));
 
 export default function EventsContainer(props) {
@@ -19,14 +21,14 @@ export default function EventsContainer(props) {
     <div className={classes.root}>
       <Grid container direction="column">
         <Grid item className={classes.featuredTitle}>
-            <Typography variant="h3">Upcoming Games</Typography>
+          <Typography variant="h3">Upcoming Games</Typography>
         </Grid>
         <Grid item md={4}>
-          <Link to='/event/create'>
+          <Link to="/event/create">
             <Button>Create Event</Button>
-            </Link>
+          </Link>
         </Grid>
-        <EventsList events={props.events}/>
+        <EventsList events={props.events} />
       </Grid>
     </div>
   );

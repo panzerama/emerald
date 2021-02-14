@@ -11,5 +11,5 @@ export default function Post(props) {
         {props.post.body}
       </p>
     </div>
-  )
+  );
 }

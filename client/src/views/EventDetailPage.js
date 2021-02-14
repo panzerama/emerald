@@ -12,19 +12,18 @@ export default function EventDetailPage(props) {
     const config = {
       url: `http://localhost:4000/v1/events/${id}`,
       method: 'GET',
-      headers: { "Content-Type": "application/json" },
-    }
+      headers: { 'Content-Type': 'application/json' },
+    };
 
     axios(config).then((response) => {
-      setEvent(response.data)
+      setEvent(response.data);
     }).catch((err) => {
       console.log('error in EventDetail useEffect');
-    })
+    });
   }, [id]);
 
   if (event) {
-    return <Event event={event} />
-  } else {
-    return <div>Loading...</div>
+    return <Event event={event} />;
   }
+  return <div>Loading...</div>;
 }

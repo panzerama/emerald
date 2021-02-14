@@ -1,7 +1,7 @@
-import React from "react";
-import { GridList, GridListTile, makeStyles } from "@material-ui/core";
+import React from 'react';
+import { GridList, GridListTile, makeStyles } from '@material-ui/core';
 
-import Event from "./Event";
+import Event from './Event';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -21,14 +21,14 @@ const useStyles = makeStyles((theme) => ({
 export default function EventsList(props) {
   const classes = useStyles();
   return (
-    <div className={classes.root}> 
+    <div className={classes.root}>
       <GridList className={classes.gridList} cols={7}>
-      {props.events.map((event) => (
-        <GridListTile key={event.id}>
-          <Event event={event} />
-        </GridListTile>
-      ))}
+        {props.events.map((event) => (
+          <GridListTile key={event.id}>
+            <Event event={event} />
+          </GridListTile>
+        ))}
       </GridList>
-      </div>
+    </div>
   );
 }

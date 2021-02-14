@@ -1,9 +1,11 @@
 import React from 'react';
-import { Box, Container, Typography, makeStyles } from '@material-ui/core';
+import {
+  Box, Container, Typography, makeStyles,
+} from '@material-ui/core';
 
 import dragonBanner from '../images/dragon-banner.png';
 
-const useStyles = makeStyles((theme) => ({ 
+const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     backgroundImage: `url(${dragonBanner})`,
@@ -25,7 +27,7 @@ const useStyles = makeStyles((theme) => ({
   subtitle: {
     color: 'white',
     margin: theme.spacing(2),
-  }
+  },
 }));
 
 export default function Banner() {
@@ -34,18 +36,18 @@ export default function Banner() {
     <Box className={classes.root}>
       <Container className={classes.headline}>
         <Typography
-          variant='h1'
+          variant="h1"
           className={classes.title}
         >
           Emerald City Game Masters Guild
         </Typography>
         <Typography
-          variant='h4'
+          variant="h4"
           className={classes.subtitle}
         >
           Professional Game Masters fostering safe &amp; inclusive tabletop RPG experiences
         </Typography>
       </Container>
     </Box>
-  )
+  );
 }

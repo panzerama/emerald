@@ -1,8 +1,8 @@
 import React from 'react';
-import { Button, Grid, Typography } from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+import { Button, Grid, Typography } from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
-import Post from "./Post";
+import Post from './Post';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,22 +23,22 @@ export default function PostContainer(props) {
       container
       direction="column"
       spacing={1}
-      alignItems='center'
+      alignItems="center"
       md={12}
     >
-        <Grid item xs={12} md={6} className={classes.title}>
-          <Typography variant="h3">Featured Articles</Typography>
+      <Grid item xs={12} md={6} className={classes.title}>
+        <Typography variant="h3">Featured Articles</Typography>
       </Grid>
       <Grid item xs={12} md={6} className={classes.title}>
-          <Button onClick={() => props.buttonHandler()}>Featured Articles</Button>
-        </Grid>
-        <Grid container item direction="row" spacing={2} md={8}>
-          {props.posts.map((post) => (
-            <Grid key={post.id} item xs={12} md={6}>
-              <Post post={post} />
-            </Grid>
-          ))}
-        </Grid>
+        <Button onClick={() => props.buttonHandler()}>Featured Articles</Button>
       </Grid>
+      <Grid container item direction="row" spacing={2} md={8}>
+        {props.posts.map((post) => (
+          <Grid key={post.id} item xs={12} md={6}>
+            <Post post={post} />
+          </Grid>
+        ))}
+      </Grid>
+    </Grid>
   );
 }

@@ -1,10 +1,10 @@
-import React from "react";
+import React from 'react';
 import {
   Card,
   CardActionArea,
   CardContent,
   makeStyles,
-} from "@material-ui/core";
+} from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
 const useStyles = makeStyles((theme) => ({

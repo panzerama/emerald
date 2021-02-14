@@ -1,14 +1,14 @@
-import React from "react";
+import React from 'react';
 import {
   AppBar,
   Button,
   IconButton,
   Toolbar,
   Typography,
-} from "@material-ui/core";
-import { makeStyles } from "@material-ui/core/styles";
+} from '@material-ui/core';
+import { makeStyles } from '@material-ui/core/styles';
 
-import Colors from "../styles/colors";
+import Colors from '../styles/colors';
 import emeraldLogo from '../images/emerald-logo.png';
 
 const useStyles = makeStyles((theme) => ({
@@ -30,7 +30,7 @@ const useStyles = makeStyles((theme) => ({
   },
   navOption: {
     margin: theme.spacing(2),
-  }
+  },
 }));
 
 export default function LogoBar(props) {
@@ -43,7 +43,7 @@ export default function LogoBar(props) {
           className={classes.menuButton}
           aria-label="menu"
         >
-          <img src={emeraldLogo} className={classes.icon} alt='Site Logo'/>
+          <img src={emeraldLogo} className={classes.icon} alt="Site Logo" />
         </IconButton>
         <Typography variant="h6" className={classes.title}>
           Emerald City Game Masters Guild
