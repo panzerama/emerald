@@ -1,5 +1,7 @@
 import React from 'react';
 
+import Button from '@material-ui/core/Button';
+
 export default function SomeButton() {
-    return <div>Some text for button</div>;
+    return <Button variant="outlined"> Submit </Button>;
 }
