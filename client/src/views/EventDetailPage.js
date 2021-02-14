@@ -4,7 +4,7 @@ import { useParams } from 'react-router-dom';
 
 import Event from '../components/Events/Event';
 
-export default function EventDetailPage(props) {
+export default function EventDetailPage() {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
 
@@ -17,9 +17,7 @@ export default function EventDetailPage(props) {
 
     axios(config).then((response) => {
       setEvent(response.data);
-    }).catch((err) => {
-      console.log('error in EventDetail useEffect');
-    });
+    }); // WORKITEM handle error case
   }, [id]);
 
   if (event) {

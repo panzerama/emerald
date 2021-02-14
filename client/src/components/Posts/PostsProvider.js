@@ -3,13 +3,12 @@ import axios from 'axios';
 
 import PostContainer from './PostContainer';
 
-export default function PostsProvider(props) {
+export default function PostsProvider() {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
-    console.log('[PostsProvider] useEffect call');
     const requestConfig = {
       url: 'http://localhost:4000/v1/posts',
       method: 'get',
@@ -18,7 +17,6 @@ export default function PostsProvider(props) {
 
     axios(requestConfig)
       .then((response) => {
-        console.log(response);
         setPosts(response.data);
         setLoading(false);
       })
@@ -28,26 +26,29 @@ export default function PostsProvider(props) {
       });
   }, []);
 
-  useEffect(() =>
-    // do something based on loading
-    function afterEffect() {
-      console.log('I wonder when afterEffect in [PostsProvider] gets called?');
-    },
-  [loading]);
-
   const renderLoading = () => <div>Loading...</div>;
 
-  const renderError = () => <p>{`Whoops, something went wrong! Error ${error}`}</p>;
+  const renderError = () => (
+    <p>{`Whoops, something went wrong! Error ${error}`}</p>
+  );
 
-  const renderPosts = () => <PostContainer posts={posts.slice(0, 4)} buttonHandler={() => { handleShowLoadingButton(); }} />;
-
-  const handleShowLoadingButton = (e) => {
+  const handleShowLoadingButton = () => {
     setLoading(true);
   };
 
+  const renderPosts = () => (
+    <PostContainer
+      posts={posts.slice(0, 4)}
+      buttonHandler={() => {
+        handleShowLoadingButton();
+      }}
+    />
+  );
+
   if (loading) {
     return renderLoading();
-  } if (posts.length > 0) {
+  }
+  if (posts.length > 0) {
     return renderPosts();
   }
   return renderError();

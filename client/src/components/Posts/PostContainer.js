@@ -16,7 +16,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PostContainer(props) {
+export default function PostContainer({ posts, buttonHandler }) {
   const classes = useStyles();
   return (
     <Grid
@@ -30,10 +30,10 @@ export default function PostContainer(props) {
         <Typography variant="h3">Featured Articles</Typography>
       </Grid>
       <Grid item xs={12} md={6} className={classes.title}>
-        <Button onClick={() => props.buttonHandler()}>Featured Articles</Button>
+        <Button onClick={() => buttonHandler()}>Featured Articles</Button>
       </Grid>
       <Grid container item direction="row" spacing={2} md={8}>
-        {props.posts.map((post) => (
+        {posts.map((post) => (
           <Grid key={post.id} item xs={12} md={6}>
             <Post post={post} />
           </Grid>
