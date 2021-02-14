@@ -40,7 +40,7 @@ export default function YourPath() {
           </Typography>
           <Typography>
             We all have different levels of experience with gaming. Tell us
-            more about yours and we'll help you find the right gaming
+            more about yours and we&apos;ll help you find the right gaming
             experience.
           </Typography>
         </div>
@@ -74,7 +74,7 @@ export default function YourPath() {
             <CardContent>
               <Typography variant="h4">Adventurer</Typography>
               <Typography>
-                You've done this before and are looking for more.
+                You&apos;ve done this before and are looking for more.
               </Typography>
             </CardContent>
             <CardActions>

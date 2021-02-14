@@ -13,17 +13,17 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Event(props) {
+export default function Event({ event }) {
   const classes = useStyles();
   return (
     <Card className={classes.root}>
       <CardActionArea>
         <CardContent>
-          <h2>{props.event.eventName}</h2>
-          <p>{props.event.description}</p>
-          <p>{props.event.gameMaster}</p>
-          <p>{props.event.date}</p>
-          <Link to={`/event/${props.event.id}`}>Go to Event!</Link>
+          <h2>{event.eventName}</h2>
+          <p>{event.description}</p>
+          <p>{event.gameMaster}</p>
+          <p>{event.date}</p>
+          <Link to={`/event/${event.id}`}>Go to Event!</Link>
         </CardContent>
       </CardActionArea>
     </Card>

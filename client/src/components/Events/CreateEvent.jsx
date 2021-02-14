@@ -51,12 +51,10 @@ export default function CreateEvent() {
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
-    console.log(`name ${name} and value ${value}`);
     setEventFormValues({
       ...eventFormValues,
       [name]: value,
     });
-    console.log(eventFormValues);
   };
 
   const handleSubmit = (event) => {
@@ -76,14 +74,8 @@ export default function CreateEvent() {
       },
     };
 
-    axios(requestConfig)
-      .then((response) => {
-        setSuccess(true);
-        console.log(`Item Created ${response.data}`);
-      })
-      .catch((err) => {
-        console.log(`We should really handle the error: ${err}`);
-      });
+    axios(requestConfig).then(setSuccess(true));
+    // WORKITEM what happens when the submission fails?
   };
 
   if (success) {

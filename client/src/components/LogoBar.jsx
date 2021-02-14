@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function LogoBar(props) {
+export default function LogoBar() {
   const classes = useStyles();
   return (
     <AppBar position="static">

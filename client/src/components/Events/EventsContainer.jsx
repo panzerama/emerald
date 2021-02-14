@@ -15,7 +15,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EventsContainer(props) {
+export default function EventsContainer({ events }) {
   const classes = useStyles();
   return (
     <div className={classes.root}>
@@ -28,7 +28,7 @@ export default function EventsContainer(props) {
             <Button>Create Event</Button>
           </Link>
         </Grid>
-        <EventsList events={props.events} />
+        <EventsList events={events} />
       </Grid>
     </div>
   );
