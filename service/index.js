@@ -4,7 +4,7 @@ const port = 4000;
 
 const debug = require('debug')('api');
 const mongoose = require('mongoose');
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config();
 const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');

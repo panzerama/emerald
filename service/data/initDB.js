@@ -5,7 +5,7 @@
  */
 
 const mongoose = require('mongoose');
-require('dotenv').config({ path: '../.env' });
+require('dotenv').config();
 
 const mockPosts = require('./mockPosts');
 const mockEvents = require('./mockEvents');
