@@ -1,12 +1,12 @@
 const mongoose = require('mongoose');
 
 const eventSchema = new mongoose.Schema({
-  eventName:  String,
+  eventName: String,
   gameMaster: String,
   date: { type: Date, default: Date.now },
   location: String,
   description: String,
-  keywords: [String]
+  keywords: [String],
 });
 
 const Event = mongoose.model('Event', eventSchema);

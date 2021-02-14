@@ -8,8 +8,6 @@ require('dotenv').config({ path: '../.env' });
 const morgan = require('morgan');
 const cors = require('cors');
 const helmet = require('helmet');
-const jwt = require('express-jwt');
-const jwks = require('jwks-rsa');
 
 const eventsRouter = require('./routers/eventsRouter');
 const postsRouter = require('./routers/postsRouter');
@@ -27,7 +25,7 @@ mongoose
 
 // Retain an instance of the connection so that we can log errors
 const db = mongoose.connection;
-db.on('error', debug('MongoDB connection error:'));
+db.on('error', () => debug('MongoDB connection error:'));
 db.on('close', () => { debug('MongoDB connection closed'); });
 
 // Middleware
@@ -36,18 +34,6 @@ app.use(morgan('combined'));
 app.use(cors());
 app.use(express.json());
 app.use(helmet());
-
-const jwtCheck = jwt({
-  secret: jwks.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    jwksUri: 'https://panzerama.us.auth0.com/.well-known/jwks.json'
-  }),
-  audience: 'emeraldcitygmg.com',
-  issuer: 'https://panzerama.us.auth0.com/',
-  algorithms: ['RS256'],
-});
 
 // Routers
 

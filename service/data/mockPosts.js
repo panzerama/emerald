@@ -44,4 +44,4 @@ exports.posts = [
     body: 'Erat nam at lectus urna duis convallis convallis. Cras sed felis eget velit aliquet sagittis id consectetur purus. Et pharetra pharetra massa massa ultricies. Congue nisi vitae suscipit tellus mauris a. Tellus pellentesque eu tincidunt tortor aliquam nulla facilisi cras. Pellentesque habitant morbi tristique senectus et. Enim ut tellus elementum sagittis vitae et leo duis. Elit eget gravida cum sociis. Amet venenatis urna cursus eget nunc. Fusce ut placerat orci nulla pellentesque dignissim. Malesuada pellentesque elit eget gravida cum sociis. Etiam dignissim diam quis enim lobortis scelerisque. Quisque id diam vel quam elementum pulvinar etiam non quam. Pulvinar elementum integer enim neque volutpat ac. Egestas sed sed risus pretium quam vulputate. Rhoncus dolor purus non enim praesent elementum facilisis leo vel. Quam lacus suspendisse faucibus interdum posuere lorem.',
     keywords: ['Amet', 'Egestas'],
   },
-]
+];

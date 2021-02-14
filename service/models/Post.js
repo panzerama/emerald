@@ -1,13 +1,13 @@
 const mongoose = require('mongoose');
 
 const postSchema = new mongoose.Schema({
-  title:  String,
+  title: String,
   author: String,
   postedDate: { type: Date, default: Date.now },
   published: Boolean,
   summary: String,
   body: String,
-  keywords: [String]
+  keywords: [String],
 });
 
 const Post = mongoose.model('Post', postSchema);

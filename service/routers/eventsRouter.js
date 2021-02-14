@@ -16,8 +16,7 @@ eventsRouter.route('/')
         res.send(events);
       }
     });
-  })
-  .post(eventsController.createEvent);
+  });
 
 eventsRouter.route('/:id')
   .get((req, res, next) => {
@@ -39,7 +38,7 @@ const jwtCheck = jwt({
     cache: true,
     rateLimit: true,
     jwksRequestsPerMinute: 5,
-    jwksUri: 'https://panzerama.us.auth0.com/.well-known/jwks.json'
+    jwksUri: 'https://panzerama.us.auth0.com/.well-known/jwks.json',
   }),
   audience: 'emeraldcitygmg.com',
   issuer: 'https://panzerama.us.auth0.com/',
@@ -53,16 +52,10 @@ eventsRouter.route('/')
   .post((req, res, next) => {
     const { permissions } = req.user;
     if (permissions.includes('manage:events')) {
-      Event.create(req.body)
-        .then((doc) => {
-          res.send({ eventId: doc._id });
-        })
-        .catch((err) => {
-          next(err);
-        });
+      next();
     } else {
       res.sendStatus(403);
     }
-  });
+  }, eventsController.createEvent);
 
 module.exports = eventsRouter;
