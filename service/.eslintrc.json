@@ -13,6 +13,7 @@
     "rules": {
         "no-unused-vars": ["warn"],
         "comma-dangle": ["warn"],
-        "import/newline-after-import": 0
+        "import/newline-after-import": 0,
+        "no-underscore-dangle": 0
     }
 }

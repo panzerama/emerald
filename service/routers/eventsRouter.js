@@ -3,18 +3,6 @@ const eventsRouter = express.Router();
 const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
 
-const jwtCheck = jwt({
-  secret: jwks.expressJwtSecret({
-    cache: true,
-    rateLimit: true,
-    jwksRequestsPerMinute: 5,
-    jwksUri: 'https://panzerama.us.auth0.com/.well-known/jwks.json'
-  }),
-  audience: 'emeraldcitygmg.com',
-  issuer: 'https://panzerama.us.auth0.com/',
-  algorithms: ['RS256'],
-});
-
 const eventsController = require('../controllers/eventsController');
 
 const Event = require('../models/Event');
@@ -22,8 +10,11 @@ const Event = require('../models/Event');
 eventsRouter.route('/')
   .get((req, res, next) => {
     Event.find({}, (err, events) => {
-      if (err) { next(err) }
-      else { res.send(events) }
+      if (err) {
+        next(err);
+      } else {
+        res.send(events);
+      }
     });
   })
   .post(eventsController.createEvent);
@@ -41,14 +32,37 @@ eventsRouter.route('/:id')
     });
   });
 
+// This function serves as middleware and does the checking of a token's
+// validity for us.
+const jwtCheck = jwt({
+  secret: jwks.expressJwtSecret({
+    cache: true,
+    rateLimit: true,
+    jwksRequestsPerMinute: 5,
+    jwksUri: 'https://panzerama.us.auth0.com/.well-known/jwks.json'
+  }),
+  audience: 'emeraldcitygmg.com',
+  issuer: 'https://panzerama.us.auth0.com/',
+  algorithms: ['RS256'],
+});
 eventsRouter.use(jwtCheck);
 
-eventsRouter.route('/:id')
+// After the JWT check middleware runs, the request object is decorated
+// with user information.
+eventsRouter.route('/')
   .post((req, res, next) => {
-  // get token, get role
-  
-})
-
-// WORKITEM - protected create event route
+    const { permissions } = req.user;
+    if (permissions.includes('manage:events')) {
+      Event.create(req.body)
+        .then((doc) => {
+          res.send({ eventId: doc._id });
+        })
+        .catch((err) => {
+          next(err);
+        });
+    } else {
+      res.sendStatus(403);
+    }
+  });
 
 module.exports = eventsRouter;
