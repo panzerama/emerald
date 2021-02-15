@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 import { Auth0Provider } from '@auth0/auth0-react';
 import { CssBaseline, ThemeProvider, createMuiTheme } from '@material-ui/core';
-import LogoBar from './components/LogoBar';
+import Header from './components/Header';
 import FrontPage from './views/FrontPage';
 import EventPage from './views/EventPage';
 import Banner from './components/Banner';
@@ -28,7 +28,7 @@ function App() {
           clientId={process.env.REATC_APP_AUTH_0_CLIENT_ID}
           redirectUri={window.location.origin}
         >
-          <LogoBar />
+          <Header />
           <Switch>
             <Route path="/event">
               <EventPage />
