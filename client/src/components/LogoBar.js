@@ -7,7 +7,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
-import { Link } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
 
 import Colors from '../styles/colors';
 import emeraldLogo from '../images/emerald-logo.png';
@@ -36,6 +36,8 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LogoBar() {
   const classes = useStyles();
+  const { loginWithRedirect } = useAuth0();
+  /** WORKITEM Show login and signup if not authed, show logout if not */
   return (
     <AppBar position="static">
       <Toolbar className={classes.toolbar}>
@@ -55,8 +57,7 @@ export default function LogoBar() {
           className={classes.navOption}
           variant="outlined"
           color="inherit"
-          component={Link}
-          to="/login"
+          onClick={() => { loginWithRedirect(); }}
         >
           Login
         </Button>

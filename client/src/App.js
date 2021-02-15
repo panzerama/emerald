@@ -6,7 +6,6 @@ import LogoBar from './components/LogoBar';
 import FrontPage from './views/FrontPage';
 import EventPage from './views/EventPage';
 import Banner from './components/Banner';
-import Login from './components/Login';
 
 const theme = createMuiTheme({
   palette: {
@@ -33,9 +32,6 @@ function App() {
           <Switch>
             <Route path="/event">
               <EventPage />
-            </Route>
-            <Route path="/login">
-              <Login />
             </Route>
             <Route exact path="/">
               <Banner />

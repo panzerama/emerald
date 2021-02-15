@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { Button, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
@@ -24,7 +25,6 @@ export default function PostContainer({ posts, buttonHandler }) {
       direction="column"
       spacing={1}
       alignItems="center"
-      md={12}
     >
       <Grid item xs={12} md={6} className={classes.title}>
         <Typography variant="h3">Featured Articles</Typography>
@@ -34,7 +34,7 @@ export default function PostContainer({ posts, buttonHandler }) {
       </Grid>
       <Grid container item direction="row" spacing={2} md={8}>
         {posts.map((post) => (
-          <Grid key={post.id} item xs={12} md={6}>
+          <Grid key={post._id} item xs={12} md={6}>
             <Post post={post} />
           </Grid>
         ))}

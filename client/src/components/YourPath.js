@@ -32,7 +32,7 @@ const useStyles = makeStyles((theme) => ({
 export default function YourPath() {
   const classes = useStyles();
   return (
-    <Grid container fluid justify="flex-start" className={classes.root} spacing={1}>
+    <Grid container justify="flex-start" className={classes.root} spacing={1}>
       <Grid item xs={10}>
         <div className={classes.yourPathHeadline}>
           <Typography variant="h3">

@@ -1,3 +1,4 @@
+/* eslint-disable no-underscore-dangle */
 import React from 'react';
 import { GridList, GridListTile, makeStyles } from '@material-ui/core';
 
@@ -24,7 +25,7 @@ export default function EventsList({ events }) {
     <div className={classes.root}>
       <GridList className={classes.gridList} cols={7}>
         {events.map((event) => (
-          <GridListTile key={event.id}>
+          <GridListTile key={event._id}>
             <Event event={event} />
           </GridListTile>
         ))}
