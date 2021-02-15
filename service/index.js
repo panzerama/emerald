@@ -30,7 +30,7 @@ db.on('close', () => { debug('MongoDB connection closed'); });
 
 // Middleware
 
-app.use(morgan('combined'));
+app.use(morgan('tiny'));
 app.use(cors());
 app.use(express.json());
 app.use(helmet());
