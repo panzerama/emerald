@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 import Event from './Event';
 
-export default function EventDetail() {
+function EventDetail() {
   const { id } = useParams();
   const [event, setEvent] = useState(null);
 
@@ -25,3 +26,5 @@ export default function EventDetail() {
   }
   return <div>Loading...</div>;
 }
+
+export default withAuthenticationRequired(EventDetail);

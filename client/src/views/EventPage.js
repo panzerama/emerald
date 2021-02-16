@@ -1,5 +1,6 @@
 import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
+
 import EventSubmitted from '../components/Events/EventSubmitted';
 import CreateEvent from '../components/Events/CreateEvent';
 import EventDetail from '../components/Events/EventDetail';
