@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-import { withAuthenticationRequired } from '@auth0/auth0-react';
 
 import Event from './Event';
 
@@ -27,4 +26,4 @@ function EventDetail() {
   return <div>Loading...</div>;
 }
 
-export default withAuthenticationRequired(EventDetail);
+export default EventDetail;

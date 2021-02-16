@@ -9,7 +9,9 @@ const useStyles = makeStyles((theme) => ({
   root: {
     width: '100%',
     backgroundImage: `url(${dragonBanner})`,
-    height: '60vh',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+    minHeight: '70vh',
     display: 'flex',
     justifyContent: 'center',
   },

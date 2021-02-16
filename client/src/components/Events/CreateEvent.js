@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
+import { withAuthenticationRequired } from '@auth0/auth0-react';
 import {
   FormControl,
   InputLabel,
@@ -44,7 +45,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function CreateEvent() {
+function CreateEvent() {
   const classes = useStyles();
   const [eventFormValues, setEventFormValues] = useState(defaultFormValues);
   const [success, setSuccess] = useState(false);
@@ -219,3 +220,7 @@ export default function CreateEvent() {
     </Container>
   );
 }
+
+export default withAuthenticationRequired(CreateEvent, {
+  returnTo: () => '/event/create',
+});
