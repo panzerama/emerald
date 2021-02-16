@@ -25,7 +25,7 @@ function App() {
       <BrowserRouter>
         <Auth0Provider
           domain={process.env.REACT_APP_AUTH_0_DOMAIN}
-          clientId={process.env.REATC_APP_AUTH_0_CLIENT_ID}
+          clientId={process.env.REACT_APP_AUTH_0_CLIENT_ID}
           redirectUri={window.location.origin}
         >
           <Header />
