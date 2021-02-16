@@ -1,46 +1,33 @@
 import React from 'react';
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
-import { Auth0Provider } from '@auth0/auth0-react';
-import { CssBaseline, ThemeProvider, createMuiTheme } from '@material-ui/core';
+import { Switch, Route } from 'react-router-dom';
+import { useAuth0 } from '@auth0/auth0-react';
+
 import Header from './components/Header';
 import FrontPage from './views/FrontPage';
 import EventPage from './views/EventPage';
 import Banner from './components/Banner';
-
-const theme = createMuiTheme({
-  palette: {
-    primary: {
-      main: '#28903A',
-    },
-    secondary: {
-      main: '#3fbf7fff',
-    },
-  },
-});
+import Loading from './components/Loading';
 
 function App() {
+  const { isLoading } = useAuth0();
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <BrowserRouter>
-        <Auth0Provider
-          domain={process.env.REACT_APP_AUTH_0_DOMAIN}
-          clientId={process.env.REACT_APP_AUTH_0_CLIENT_ID}
-          redirectUri={window.location.origin}
-        >
-          <Header />
-          <Switch>
-            <Route path="/event">
-              <EventPage />
-            </Route>
-            <Route exact path="/">
-              <Banner />
-              <FrontPage />
-            </Route>
-          </Switch>
-        </Auth0Provider>
-      </BrowserRouter>
-    </ThemeProvider>
+    <>
+      <Header />
+      <Switch>
+        <Route path="/event">
+          <EventPage />
+        </Route>
+        <Route exact path="/">
+          <Banner />
+          <FrontPage />
+        </Route>
+      </Switch>
+    </>
   );
 }
 
