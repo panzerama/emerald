@@ -8,7 +8,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import AuthButtonGroup from './AuthButtonGroup/AuthButtonGroup';
+import AuthButtonGroup from './Auth/AuthButtonGroup';
 import Colors from '../styles/colors';
 import emeraldLogo from '../images/emerald-logo.png';
 
