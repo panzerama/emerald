@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
-import { withAuthenticationRequired } from '@auth0/auth0-react';
+import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
 import {
   FormControl,
   InputLabel,
@@ -49,6 +49,7 @@ function CreateEvent() {
   const classes = useStyles();
   const [eventFormValues, setEventFormValues] = useState(defaultFormValues);
   const [success, setSuccess] = useState(false);
+  const { getAccessTokenSilently } = useAuth0();
 
   const handleInputChange = (event) => {
     const { name, value } = event.target;
@@ -58,12 +59,19 @@ function CreateEvent() {
     });
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
+
+    const authToken = await getAccessTokenSilently();
+    console.log(`Auth token ${authToken}`);
+
     const requestConfig = {
       url: 'http://localhost:4000/v1/events',
       method: 'post',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${authToken}`,
+      },
       data: {
         eventName: eventFormValues.eventName,
         gameMaster: eventFormValues.gameMaster,

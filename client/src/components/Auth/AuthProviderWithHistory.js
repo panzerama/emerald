@@ -7,6 +7,7 @@ https://auth0.com/blog/complete-guide-to-react-user-authentication/ */
 const AuthProviderWithHistory = ({ children }) => {
   const domain = process.env.REACT_APP_AUTH_0_DOMAIN;
   const clientId = process.env.REACT_APP_AUTH_0_CLIENT_ID;
+  const audience = process.env.REACT_APP_AUTH_0_AUDIENCE;
 
   const history = useHistory();
   /* The blog example mentioned above confusingly names this variable appState,
@@ -21,6 +22,7 @@ const AuthProviderWithHistory = ({ children }) => {
       clientId={clientId}
       redirectUri={window.location.origin}
       onRedirectCallback={onRedirectCallback}
+      audience={audience}
     >
       {children}
     </Auth0Provider>
