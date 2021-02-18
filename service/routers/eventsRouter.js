@@ -2,6 +2,7 @@ const express = require('express');
 const eventsRouter = express.Router();
 const jwt = require('express-jwt');
 const jwks = require('jwks-rsa');
+const debug = require('debug')('api');
 
 const eventsController = require('../controllers/eventsController');
 
@@ -51,8 +52,10 @@ eventsRouter.use(jwtCheck);
 eventsRouter.route('/')
   .post((req, res, next) => {
     const { permissions } = req.user;
+    debug(`permissions for user ${permissions}`);
     if (permissions.includes('manage:events')) {
-      next();
+      // what do we do here?
+      debug('Congrats, success!');
     } else {
       res.sendStatus(403);
     }
