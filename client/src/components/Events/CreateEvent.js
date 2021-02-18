@@ -63,7 +63,8 @@ function CreateEvent() {
     event.preventDefault();
 
     const authToken = await getAccessTokenSilently();
-    console.log(`Auth token ${authToken}`);
+
+    console.log('Event Form Values', eventFormValues);
 
     const requestConfig = {
       url: 'http://localhost:4000/v1/events',
@@ -77,14 +78,21 @@ function CreateEvent() {
         gameMaster: eventFormValues.gameMaster,
         date: eventFormValues.date,
         time: eventFormValues.time,
+        timeZone: eventFormValues.timeZone,
         location: eventFormValues.location,
         description: eventFormValues.description,
         keywords: eventFormValues.keywords,
       },
     };
 
-    axios(requestConfig).then(setSuccess(true));
-    // WORKITEM what happens when the submission fails?
+    axios(requestConfig)
+      .then((response) => {
+        setSuccess(true);
+        console.log(`event id ${response.eventId}`);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   };
 
   if (success) {

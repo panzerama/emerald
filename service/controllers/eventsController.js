@@ -1,4 +1,5 @@
 const dateFns = require('date-fns');
+const debug = require('debug')('api');
 
 const Event = require('../models/Event');
 
@@ -10,14 +11,17 @@ exports.createEvent = (req, res, next) => {
     keywords,
   } = req.body;
   const dateTime = `${date} ${time} ${timeZone}`;
+  debug(`Date time string ${dateTime}`);
   const eventDate = dateFns.parse(
     dateTime,
-    'yyyy-MM-dd hh:mm aa XX',
+    'yyyy-MM-dd HH:mm XX',
     new Date(),
   );
 
+  debug(`Event Date ${eventDate}`);
+
   if (!dateFns.isFuture(eventDate)) {
-    res.sendStatus(400);
+    res.status(400);
     res.send({ error: 'Event date must be in the future' });
   }
 

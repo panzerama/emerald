@@ -54,8 +54,7 @@ eventsRouter.route('/')
     const { permissions } = req.user;
     debug(`permissions for user ${permissions}`);
     if (permissions.includes('manage:events')) {
-      // what do we do here?
-      debug('Congrats, success!');
+      next();
     } else {
       res.sendStatus(403);
     }
