@@ -49,6 +49,7 @@ function CreateEvent() {
   const classes = useStyles();
   const [eventFormValues, setEventFormValues] = useState(defaultFormValues);
   const [success, setSuccess] = useState(false);
+  const [error, setError] = useState(null);
   const { getAccessTokenSilently } = useAuth0();
 
   const handleInputChange = (event) => {
@@ -63,8 +64,6 @@ function CreateEvent() {
     event.preventDefault();
 
     const authToken = await getAccessTokenSilently();
-
-    console.log('Event Form Values', eventFormValues);
 
     const requestConfig = {
       url: 'http://localhost:4000/v1/events',
@@ -86,18 +85,22 @@ function CreateEvent() {
     };
 
     axios(requestConfig)
-      .then((response) => {
+      .then(() => {
         setSuccess(true);
-        console.log(`event id ${response.eventId}`);
       })
       .catch((err) => {
-        console.error(err);
+        setError(err);
       });
   };
 
   if (success) {
     return <Redirect to="/event/submitted" />;
   }
+
+  if (error) {
+    return <div>Something went wrong</div>;
+  }
+
   return (
     <Container maxWidth="sm">
       <Typography className={classes.title} variant="h3">
