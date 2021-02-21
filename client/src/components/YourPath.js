@@ -9,6 +9,8 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
+import SectionContainer from './LayoutUtils/SectionContainer';
+
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -32,7 +34,7 @@ const useStyles = makeStyles((theme) => ({
 export default function YourPath() {
   const classes = useStyles();
   return (
-    <Grid container justify="flex-start" className={classes.root} spacing={1}>
+    <SectionContainer>
       <Grid item xs={10}>
         <div className={classes.yourPathHeadline}>
           <Typography variant="h3">
@@ -101,6 +103,6 @@ export default function YourPath() {
           </Card>
         </Grid>
       </Grid>
-    </Grid>
+    </SectionContainer>
   );
 }

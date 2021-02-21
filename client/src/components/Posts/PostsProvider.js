@@ -32,16 +32,9 @@ export default function PostsProvider() {
     <p>{`Whoops, something went wrong! Error ${error}`}</p>
   );
 
-  const handleShowLoadingButton = () => {
-    setLoading(true);
-  };
-
   const renderPosts = () => (
     <PostContainer
       posts={posts.slice(0, 4)}
-      buttonHandler={() => {
-        handleShowLoadingButton();
-      }}
     />
   );
 

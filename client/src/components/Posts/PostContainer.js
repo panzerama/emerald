@@ -4,41 +4,32 @@ import { Button, Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Post from './Post';
+import SectionContainer from '../LayoutUtils/SectionContainer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
   },
   title: {
-    margin: theme.spacing(1),
+    margin: theme.spacing(2),
   },
-  postsGrid: {
+  gridItem: {
     margin: theme.spacing(3),
   },
 }));
 
-export default function PostContainer({ posts, buttonHandler }) {
+export default function PostContainer({ posts }) {
   const classes = useStyles();
   return (
-    <Grid
-      container
-      direction="column"
-      spacing={1}
-      alignItems="center"
-    >
-      <Grid item xs={12} md={6} className={classes.title}>
+    <SectionContainer direction="column">
+      <Grid item>
         <Typography variant="h3">Featured Articles</Typography>
       </Grid>
-      <Grid item xs={12} md={6} className={classes.title}>
-        <Button onClick={() => buttonHandler()}>Featured Articles</Button>
-      </Grid>
-      <Grid container item direction="row" spacing={2} md={8}>
-        {posts.map((post) => (
-          <Grid key={post._id} item xs={12} md={6}>
-            <Post post={post} />
-          </Grid>
-        ))}
-      </Grid>
-    </Grid>
+      {posts.map((post) => (
+        <Grid key={post._id} item className={classes.gridItem}>
+          <Post post={post} />
+        </Grid>
+      ))}
+    </SectionContainer>
   );
 }
