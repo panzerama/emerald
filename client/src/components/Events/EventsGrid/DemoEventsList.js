@@ -22,7 +22,7 @@ const eventTiles = [
     img: monsters,
     title: 'Monsterhearts',
     gameMaster: 'Caitlin',
-    cols: 3,
+    cols: 2,
   },
   {
     img: team,
@@ -40,7 +40,7 @@ const eventTiles = [
     img: love,
     title: 'Love is in the Aaracokra',
     gameMaster: 'Json',
-    cols: 3,
+    cols: 2,
   },
 ];
 
