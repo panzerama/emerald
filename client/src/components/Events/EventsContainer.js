@@ -4,7 +4,7 @@ import {
 } from '@material-ui/core';
 import { Link } from 'react-router-dom';
 
-import EventsList from './EventsList';
+import EventsList from './EventsList/EventsList';
 
 const useStyles = makeStyles((theme) => ({
   root: {
