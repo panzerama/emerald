@@ -33,7 +33,7 @@ export default function EventsList({ events }) {
   return (
     <div className={classes.root}>
       <GridList cellHeight={250} className={classes.gridList} cols={5}>
-        {events.map((event, index) => (
+        {events.map((event) => (
           <GridListTile
             key={event.image}
             cols={event.cols || 1}
