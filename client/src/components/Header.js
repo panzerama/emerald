@@ -7,6 +7,7 @@ import {
   Typography,
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
+import { Link } from 'react-router-dom';
 
 import AuthButtonGroup from './Auth/AuthButtonGroup';
 import Colors from '../styles/colors';
@@ -44,6 +45,8 @@ export default function Header() {
           edge="start"
           className={classes.menuButton}
           aria-label="menu"
+          component={Link}
+          to="/"
         >
           <img src={emeraldLogo} className={classes.icon} alt="Site Logo" />
         </IconButton>

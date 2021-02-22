@@ -1,5 +1,6 @@
 /* eslint-disable no-underscore-dangle */
 import React from 'react';
+import { Link } from 'react-router-dom';
 import {
   GridList,
   GridListTile,
@@ -44,7 +45,12 @@ export default function EventsList({ events }) {
               title={event.eventName}
               subtitle={event.gameMaster}
               actionIcon={(
-                <IconButton aria-label={`info about ${event.eventName}`} className={classes.icon}>
+                <IconButton
+                  aria-label={`info about ${event.eventName}`}
+                  className={classes.icon}
+                  component={Link}
+                  to={`/event/${event._id}`}
+                >
                   <InfoIcon />
                 </IconButton>
               )}

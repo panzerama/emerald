@@ -1,12 +1,28 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
+import { Grid, Typography, makeStyles, Button } from '@material-ui/core';
 
-import Event from './Event';
+import Loading from '../Loading';
+import SectionContainer from '../LayoutUtils/SectionContainer';
+
+const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    justifyContent: 'space-around',
+    width: '50vw',
+  },
+  featureImage: {
+    width: '15vw',
+  },
+});
 
 function EventDetail() {
+  const classes = useStyles();
   const { id } = useParams();
   const [event, setEvent] = useState(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
     const config = {
@@ -17,13 +33,48 @@ function EventDetail() {
 
     axios(config).then((response) => {
       setEvent(response.data);
-    }); // WORKITEM handle error case
+    }).catch((err) => {
+      setError(err);
+    }).finally(() => {
+      setLoading(false);
+    });
   }, [id]);
 
-  if (event) {
-    return <Event event={event} />;
+  if (loading) {
+    return <Loading />;
+  } else if (error) {
+    return <div>{`${error}`}</div>;
+  } else {
+    return (
+      <SectionContainer direction="column">
+        <Grid container item className={classes.root}>
+          <Grid container item className={classes.root} direction="row">
+            <Grid item>
+              <img
+                className={classes.featureImage}
+                src={`http://localhost:4000${event.image}`}
+                alt={event.title}
+              />
+            </Grid>
+            <Grid item>
+              <Typography variant="h3">
+                {event.eventName}
+              </Typography>
+              <Typography>
+                {event.gameMaster}
+              </Typography>
+              <Typography>
+                {event.description}
+              </Typography>
+            </Grid>
+          </Grid>
+          <Grid item>
+            <Button>Buy Tickets</Button>
+          </Grid>
+        </Grid>
+      </SectionContainer>
+    );
   }
-  return <div>Loading...</div>;
 }
 
 export default EventDetail;
