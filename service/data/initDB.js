@@ -36,3 +36,5 @@ mongoose
     () => { console.log('Connected successfully'); },
     (err) => { console.log(`Connection failed with ${err}`); },
   );
+
+setTimeout(() => mongoose.connection.close(), 2000);

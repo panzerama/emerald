@@ -8,6 +8,7 @@ const eventsController = require('../controllers/eventsController');
 
 const Event = require('../models/Event');
 
+// workitem return ordered by time
 eventsRouter.route('/')
   .get((req, res, next) => {
     Event.find({}, (err, events) => {

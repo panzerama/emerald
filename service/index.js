@@ -35,6 +35,9 @@ app.use(cors());
 app.use(express.json());
 app.use(helmet());
 
+// Static Files
+app.use('/img', express.static('resources/images'));
+
 // Routers
 
 app.use('/v1/events', eventsRouter);

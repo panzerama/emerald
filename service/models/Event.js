@@ -7,6 +7,7 @@ const eventSchema = new mongoose.Schema({
   location: String,
   description: String,
   keywords: [String],
+  image: String,
 });
 
 const Event = mongoose.model('Event', eventSchema);

@@ -20,7 +20,7 @@ export default function EventsContainer({ events }) {
       <Grid item className={classes.featuredTitle}>
         <Typography variant="h3">Upcoming Games</Typography>
       </Grid>
-      <EventsList events={events} />
+      <EventsList events={events.slice(0, 6)} />
     </SectionContainer>
   );
 }
