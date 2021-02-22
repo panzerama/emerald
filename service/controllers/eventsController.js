@@ -2,8 +2,9 @@ const dateFns = require('date-fns');
 const debug = require('debug')('api');
 
 const Event = require('../models/Event');
+const { getLocation } = require('../utils/GoogleMapsWrapper');
 
-exports.createEvent = (req, res, next) => {
+exports.createEvent = async (req, res, next) => {
   const {
     date,
     time,
@@ -25,6 +26,17 @@ exports.createEvent = (req, res, next) => {
     res.send({ error: 'Event date must be in the future' });
   }
 
+  let geocodedLocation = {};
+
+  try {
+    geocodedLocation = await getLocation(req.body.location);
+    debug(`Geocoded Location ${geocodedLocation}`);
+  } catch (err) {
+    res.status(400);
+    res.send({ error: 'Invalid Location' });
+    debug(`Location error ${err}`);
+  }
+
   let keywordArr = [];
   if (typeof (keywords) === 'string') {
     keywordArr = keywords.split(',');
@@ -34,7 +46,7 @@ exports.createEvent = (req, res, next) => {
     eventName: req.body.eventName,
     gameMaster: req.body.gameMaster,
     date: eventDate,
-    location: req.body.location,
+    location: geocodedLocation,
     description: req.body.description,
     keywords: keywordArr,
   };
