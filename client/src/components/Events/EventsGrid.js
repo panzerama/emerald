@@ -9,8 +9,6 @@ import {
 } from '@material-ui/core';
 import InfoIcon from '@material-ui/icons/Info';
 
-import eventList from './DemoEventsList';
-
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
@@ -29,24 +27,24 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function EventsList() {
+export default function EventsList({ events }) {
   const classes = useStyles();
 
   return (
     <div className={classes.root}>
       <GridList cellHeight={250} className={classes.gridList} cols={5}>
-        {eventList.map((tile) => (
+        {events.map((event, index) => (
           <GridListTile
-            key={tile.img}
-            cols={tile.cols || 1}
+            key={event.image}
+            cols={event.cols || 1}
             className={classes.gridTile}
           >
-            <img src={tile.img} alt={tile.title} />
+            <img src={`http://localhost:4000${event.image}`} alt={event.eventName} />
             <GridListTileBar
-              title={tile.title}
-              subtitle={tile.gameMaster}
+              title={event.eventName}
+              subtitle={event.gameMaster}
               actionIcon={(
-                <IconButton aria-label={`info about ${tile.title}`} className={classes.icon}>
+                <IconButton aria-label={`info about ${event.eventName}`} className={classes.icon}>
                   <InfoIcon />
                 </IconButton>
               )}
