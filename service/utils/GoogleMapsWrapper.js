@@ -12,14 +12,14 @@ exports.getLocation = async (targetAddress) => {
   const requestURL = `${GoogleGeocodeURL}${addressParam}${apiKeyParam}`;
 
   const response = await axios.get(requestURL);
-  debug(`geocode response ${response}`);
-  if (response.ok) {
-    const geocodeResult = await response.json();
+  if (response.data.status === 'OK') {
+    const geocodeResult = response.data.results[0];
     const location = {
       readable: geocodeResult.formatted_address,
       latitude: geocodeResult.geometry.location.lat,
       longitude: geocodeResult.geometry.location.lng,
     };
+    debug('geocode reformatted ', location);
     return location;
   }
 
