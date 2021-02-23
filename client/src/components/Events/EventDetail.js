@@ -5,6 +5,7 @@ import { Grid, Typography, makeStyles, Button } from '@material-ui/core';
 
 import Loading from '../Loading';
 import SectionContainer from '../LayoutUtils/SectionContainer';
+import LocationDetail from '../LocationDetail';
 
 const useStyles = makeStyles({
   root: {
@@ -16,6 +17,11 @@ const useStyles = makeStyles({
     width: '15vw',
   },
 });
+
+const mapMarkerPosition = {
+  lat: 47.76011099999999,
+  lng: -122.2054452,
+};
 
 function EventDetail() {
   const classes = useStyles();
@@ -70,6 +76,9 @@ function EventDetail() {
           </Grid>
           <Grid item>
             <Button>Buy Tickets</Button>
+          </Grid>
+          <Grid item>
+            <LocationDetail location={mapMarkerPosition} />
           </Grid>
         </Grid>
       </SectionContainer>
