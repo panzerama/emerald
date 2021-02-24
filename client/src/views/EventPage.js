@@ -5,6 +5,7 @@ import { Grid, makeStyles } from '@material-ui/core';
 import EventSubmitted from '../components/Events/EventSubmitted';
 import CreateEvent from '../components/Events/CreateEvent';
 import EventDetail from '../components/Events/EventDetail';
+import MediaUpload from '../components/MediaUpload';
 
 const useStyles = makeStyles({
   root: {
@@ -26,6 +27,9 @@ export default function EventPage() {
         </Route>
         <Route exact path={`${path}/create`}>
           <CreateEvent />
+        </Route>
+        <Route exact path={`${path}/upload`}>
+          <MediaUpload />
         </Route>
         <Route path={`${path}/:id`}>
           <EventDetail />
