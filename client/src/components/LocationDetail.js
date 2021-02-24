@@ -1,6 +1,8 @@
 import React from 'react';
-import { Paper, makeStyles } from '@material-ui/core';
-import { LoadScript, GoogleMap, Marker } from '@react-google-maps/api';
+import { makeStyles } from '@material-ui/core';
+import GoogleMapReact from 'google-map-react';
+
+import Marker from './Marker';
 
 const useStyles = makeStyles({
   root: {
@@ -9,19 +11,24 @@ const useStyles = makeStyles({
   },
 });
 
+const zoomLevel = 20;
+
 export default function LocationDetail({ location }) {
   const classes = useStyles();
+  const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
   return (
-    <Paper className={classes.root}>
-      <LoadScript googleMapsApiKey={process.env.REACT_APP_GOOGLE_MAPS_API_KEY}>
-        <GoogleMap mapContainerStyle={classes.root} center={location} zoom={10}>
-          <Marker
-            position={location}
-            clickable
-            onClick={() => { console.log('Map Marker Click!'); }}
-          />
-        </GoogleMap>
-      </LoadScript>
-    </Paper>
+    <div className={classes.root}>
+      <GoogleMapReact
+        bootstrapURLKeys={{ key: apiKey }}
+        defaultCenter={location}
+        defaultZoom={zoomLevel}
+      >
+        <Marker
+          lat={location.lat}
+          lng={location.lng}
+          text="My Marker"
+        />
+      </GoogleMapReact>
+    </div>
   );
 }

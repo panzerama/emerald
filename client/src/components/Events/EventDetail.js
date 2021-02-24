@@ -18,7 +18,7 @@ const useStyles = makeStyles({
   },
 });
 
-const mapMarkerPosition = {
+const location = {
   lat: 47.76011099999999,
   lng: -122.2054452,
 };
@@ -78,7 +78,7 @@ function EventDetail() {
             <Button>Buy Tickets</Button>
           </Grid>
           <Grid item>
-            <LocationDetail location={mapMarkerPosition} />
+            <LocationDetail location={location} />
           </Grid>
         </Grid>
       </SectionContainer>
