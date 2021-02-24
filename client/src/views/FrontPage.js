@@ -8,7 +8,7 @@ import PostsProvider from '../components/Posts/PostsProvider';
 const useStyles = makeStyles({
   root: {
     display: 'flex',
-    height: '2000px',
+    minHeight: '1000px',
     alignItems: 'center',
     flexWrap: 'nowrap',
   },

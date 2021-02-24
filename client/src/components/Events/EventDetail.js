@@ -18,11 +18,6 @@ const useStyles = makeStyles({
   },
 });
 
-const location = {
-  lat: 47.76011099999999,
-  lng: -122.2054452,
-};
-
 function EventDetail() {
   const classes = useStyles();
   const { id } = useParams();
@@ -38,6 +33,7 @@ function EventDetail() {
     };
 
     axios(config).then((response) => {
+      console.log('event response ', response.data);
       setEvent(response.data);
     }).catch((err) => {
       setError(err);
@@ -78,7 +74,11 @@ function EventDetail() {
             <Button>Buy Tickets</Button>
           </Grid>
           <Grid item>
-            <LocationDetail location={location} />
+            { !loading ? (
+            <LocationDetail 
+              location={{ lat: event.location.latitude, lng: event.location.longitude }} 
+            />
+            ) : <></> }
           </Grid>
         </Grid>
       </SectionContainer>

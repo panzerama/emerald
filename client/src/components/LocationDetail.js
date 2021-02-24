@@ -11,7 +11,7 @@ const useStyles = makeStyles({
   },
 });
 
-const zoomLevel = 20;
+const zoomLevel = 15;
 
 export default function LocationDetail({ location }) {
   const classes = useStyles();
@@ -20,7 +20,7 @@ export default function LocationDetail({ location }) {
     <div className={classes.root}>
       <GoogleMapReact
         bootstrapURLKeys={{ key: apiKey }}
-        defaultCenter={location}
+        defaultCenter={[location.lat, location.lng]}
         defaultZoom={zoomLevel}
       >
         <Marker
