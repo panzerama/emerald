@@ -10,7 +10,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { Link } from 'react-router-dom';
 
 import AuthButtonGroup from './Auth/AuthButtonGroup';
-import Colors from '../styles/colors';
+import Colors from '../constants/colors';
 import emeraldLogo from '../images/emerald-logo.png';
 
 const useStyles = makeStyles((theme) => ({

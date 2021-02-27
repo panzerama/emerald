@@ -3,8 +3,8 @@ import { Switch, Route } from 'react-router-dom';
 import { useAuth0 } from '@auth0/auth0-react';
 
 import Header from './components/Header';
-import FrontPage from './views/FrontPage';
-import EventPage from './views/EventPage';
+import FrontPage from './components/FrontPage';
+import EventPage from './components/Events/EventPage';
 import Banner from './components/Banner';
 import Loading from './components/Loading';
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { Grid, makeStyles } from '@material-ui/core';
 
-import YourPath from '../components/YourPath';
-import EventsProvider from '../components/Events/EventsProvider';
-import PostsProvider from '../components/Posts/PostsProvider';
+import YourPath from './YourPath';
+import EventsProvider from './Events/EventsProvider';
+import PostsProvider from './Posts/PostsProvider';
 
 const useStyles = makeStyles({
   root: {

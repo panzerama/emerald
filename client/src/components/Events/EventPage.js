@@ -2,9 +2,9 @@ import React from 'react';
 import { Switch, Route, useRouteMatch } from 'react-router-dom';
 import { Grid, makeStyles } from '@material-ui/core';
 
-import EventSubmitted from '../components/Events/EventSubmitted';
-import CreateEvent from '../components/Events/CreateEvent';
-import EventDetail from '../components/Events/EventDetail';
+import EventSubmitted from './EventSubmitted';
+import CreateEvent from './CreateEvent';
+import EventDetail from './EventDetail';
 
 const useStyles = makeStyles({
   root: {

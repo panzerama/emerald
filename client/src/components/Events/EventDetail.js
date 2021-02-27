@@ -33,7 +33,6 @@ function EventDetail() {
     };
 
     axios(config).then((response) => {
-      console.log('event response ', response.data);
       setEvent(response.data);
     }).catch((err) => {
       setError(err);
@@ -75,9 +74,9 @@ function EventDetail() {
           </Grid>
           <Grid item>
             { !loading ? (
-            <LocationDetail 
-              location={{ lat: event.location.latitude, lng: event.location.longitude }} 
-            />
+              <LocationDetail
+                location={{ lat: event.location.latitude, lng: event.location.longitude }}
+              />
             ) : <></> }
           </Grid>
         </Grid>
