@@ -26,15 +26,16 @@ exports.createEvent = async (req, res, next) => {
     res.send({ error: 'Event date must be in the future' });
   }
 
-  let geocodedLocation = {};
-
-  try {
-    geocodedLocation = await getLocation(req.body.location);
-    debug(`Geocoded Location ${geocodedLocation}`);
-  } catch (err) {
-    res.status(400);
-    res.send({ error: 'Invalid Location' });
-    debug(`Location error ${err}`);
+  let geocodedLocation;
+  if (req.body.locatoinType) {
+    try {
+      geocodedLocation = await getLocation(req.body.location);
+      debug(`Geocoded Location ${geocodedLocation}`);
+    } catch (err) {
+      res.status(400);
+      res.send({ error: 'Invalid Location' });
+      debug(`Location error ${err}`);
+    }
   }
 
   let keywordArr = [];
@@ -46,6 +47,7 @@ exports.createEvent = async (req, res, next) => {
     eventName: req.body.eventName,
     gameMaster: req.body.gameMaster,
     date: eventDate,
+    locationType: req.body.locatoinType,
     location: geocodedLocation,
     description: req.body.description,
     keywords: keywordArr,

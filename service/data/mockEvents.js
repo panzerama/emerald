@@ -3,6 +3,7 @@ exports.upcomingEvents = [
     eventName: 'Love is in the Aaracokra',
     date: '2021-02-15T18:33:27-08:00',
     gameMaster: 'Jason D Panzer',
+    locationType: 'venue',
     location: {
       readable: 'Seattle, WA',
       latitude: 47.6062095,
@@ -16,11 +17,7 @@ exports.upcomingEvents = [
     eventName: 'Jurassic Park',
     date: '2021-02-22T18:33:27-08:00',
     gameMaster: 'Allison Smith',
-    location: {
-      readable: 'Seattle, WA',
-      latitude: 47.6062095,
-      longitude: -122.3320708,
-    },
+    locationType: 'online',
     description: 'Dinosaurs',
     keywords: ['something'],
     image: '/img/cloud.jpg',
@@ -29,6 +26,7 @@ exports.upcomingEvents = [
     eventName: 'Saved by the Spell',
     date: '2021-03-10T19:33:27-08:00',
     gameMaster: 'Nikkie Silveira',
+    locationType: 'venue',
     location: {
       readable: 'Bothell, WA',
       latitude: 47.76011099999999,
@@ -42,6 +40,7 @@ exports.upcomingEvents = [
     eventName: 'The Land of the Midnight Sun',
     date: '2021-03-28T15:33:27-08:00',
     gameMaster: 'Doug Johnson',
+    locationType: 'venue',
     location: {
       readable: 'Olympia, WA',
       latitude: 47.0378741,
@@ -55,11 +54,7 @@ exports.upcomingEvents = [
     eventName: 'Dead of Winter',
     date: '2021-02-20T18:33:27-08:00',
     gameMaster: 'Jason D Panzer',
-    location: {
-      readable: 'Seattle, WA',
-      latitude: 47.6062095,
-      longitude: -122.3320708,
-    },
+    locationType: 'online',
     description: 'A crazy bird-brained adventure',
     keywords: ['something'],
     image: '/img/mountain.jpg',
@@ -68,6 +63,7 @@ exports.upcomingEvents = [
     eventName: 'Teambuilding Made Easy',
     date: '2021-02-15T18:33:27-08:00',
     gameMaster: 'Doug Johnson',
+    locationType: 'venue',
     location: {
       readable: 'Bothell, WA',
       latitude: 47.76011099999999,
@@ -81,6 +77,7 @@ exports.upcomingEvents = [
     eventName: 'DnD for Beginners',
     date: '2021-02-15T18:33:27-08:00',
     gameMaster: 'Doug Johnson',
+    locationType: 'venue',
     location: {
       readable: 'Olympia, WA',
       latitude: 47.0378741,
@@ -94,11 +91,7 @@ exports.upcomingEvents = [
     eventName: 'Monster of the Week, Classics',
     date: '2021-02-15T18:33:27-08:00',
     gameMaster: 'Doug Johnson',
-    location: {
-      readable: 'Seattle, WA',
-      latitude: 47.6062095,
-      longitude: -122.3320708,
-    },
+    locationType: 'online',
     description: 'A crazy bird-brained adventure',
     keywords: ['something'],
     image: '/img/west.png',
@@ -107,6 +100,7 @@ exports.upcomingEvents = [
     eventName: 'Monsterhearts',
     date: '2021-02-15T18:33:27-08:00',
     gameMaster: 'Doug Johnson',
+    locationType: 'venue',
     location: {
       readable: 'Bothell, WA',
       latitude: 47.76011099999999,

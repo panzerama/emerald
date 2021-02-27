@@ -7,11 +7,16 @@ const locationSchema = new mongoose.Schema({
 });
 
 const eventSchema = new mongoose.Schema({
-  eventName: String,
-  gameMaster: String,
-  date: { type: Date, default: Date.now },
-  location: { type: locationSchema, required: true },
-  description: String,
+  eventName: { type: String, required: true },
+  gameMaster: { type: String, required: true },
+  date: { type: Date, required: true },
+  locationType: {
+    type: String,
+    enum: ['online', 'venue'],
+    required: true,
+  },
+  location: locationSchema,
+  description: { type: String, required: true },
   keywords: [String],
   image: String,
 });
