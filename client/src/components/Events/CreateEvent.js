@@ -3,6 +3,11 @@ import { Redirect } from 'react-router-dom';
 import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
 import {
   FormControl,
+  FormLabel,
+  FormControlLabel,
+  RadioGroup,
+
+  Radio,
   InputLabel,
   MenuItem,
   Select,
@@ -20,6 +25,7 @@ const defaultFormValues = {
   date: '',
   time: '',
   timeZone: '',
+  locationType: '',
   location: '',
   description: '',
   keywords: '',
@@ -202,6 +208,7 @@ function CreateEvent() {
             </Select>
           </FormControl>
         </div>
+
         <TextField
           required
           name="description"
@@ -214,6 +221,35 @@ function CreateEvent() {
           fullWidth
           onChange={handleInputChange}
         />
+
+        <FormControl component="fieldset" className={classes.formControl}>
+          <FormLabel component="legend">Where is the event happening?</FormLabel>
+          <RadioGroup
+            aria-label="location-type"
+            name="locationType"
+            value={eventFormValues.locationType}
+            onChange={handleInputChange}
+          >
+            <FormControlLabel value="online" control={<Radio />} label="Online" />
+            <FormControlLabel value="venue" control={<Radio />} label="Venue" />
+          </RadioGroup>
+        </FormControl>
+
+        {eventFormValues.locationType === 'venue'
+          ? (
+            <TextField
+              required
+              name="location"
+              label="Venue Address"
+              value={eventFormValues.location}
+              multiline
+              rows={1}
+              variant="outlined"
+              className={classes.formControl}
+              fullWidth
+              onChange={handleInputChange}
+            />
+          ) : <></>}
         <TextField
           name="keywords"
           label="Keywords"

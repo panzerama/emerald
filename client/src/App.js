@@ -26,6 +26,9 @@ function App() {
           <Banner />
           <FrontPage />
         </Route>
+        <Route path="*">
+          <div>Couldn&apos;t find that page</div>
+        </Route>
       </Switch>
     </>
   );
