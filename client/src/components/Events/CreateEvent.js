@@ -1,41 +1,47 @@
 import React, { useState } from 'react';
 import { Redirect } from 'react-router-dom';
 import { withAuthenticationRequired, useAuth0 } from '@auth0/auth0-react';
+import { useFormik } from 'formik';
+import * as yup from 'yup';
 import {
   FormControl,
   FormLabel,
   FormControlLabel,
   RadioGroup,
-
   Radio,
   InputLabel,
   MenuItem,
   Select,
   TextField,
-  Container,
   Button,
   makeStyles,
   Typography,
 } from '@material-ui/core';
 import axios from 'axios';
 
-const defaultFormValues = {
-  eventName: '',
-  gameMaster: '',
-  date: '',
-  time: '',
-  timeZone: '',
-  locationType: '',
-  location: '',
-  description: '',
-  keywords: '',
-};
+import SectionContainer from '../LayoutUtils/SectionContainer';
+
+const validationRules = yup.object({
+  eventName: yup.string('Event Name').required('Event name required'),
+  gameMaster: yup
+    .string('Game Master')
+    .oneOf(['Allison', 'Doug', 'Json'], 'Must be a valid GM')
+    .required('Game master required'),
+  date: yup.string('Date').required('Date required'),
+  time: yup.string('Time').required('Time required'),
+  timeZone: yup.string('Event Name').required('Event name required'),
+  locationType: yup.string('Location Type').matches(/(online|venue)/, 'Location type required'),
+  location: yup.string('Location'),
+  description: yup.string('Description').required('Description required'),
+  keywords: yup.string('Keywords'),
+});
 
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
+    width: '50vw',
   },
   formControl: {
     margin: theme.spacing(1),
@@ -53,51 +59,54 @@ const useStyles = makeStyles((theme) => ({
 
 function CreateEvent() {
   const classes = useStyles();
-  const [eventFormValues, setEventFormValues] = useState(defaultFormValues);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState(null);
   const { getAccessTokenSilently } = useAuth0();
 
-  const handleInputChange = (event) => {
-    const { name, value } = event.target;
-    setEventFormValues({
-      ...eventFormValues,
-      [name]: value,
-    });
-  };
+  const formik = useFormik({
+    initialValues: {
+      eventName: '',
+      gameMaster: '',
+      date: '',
+      time: '',
+      timeZone: '',
+      locationType: '',
+      location: '',
+      description: '',
+      keywords: '',
+    },
+    validationSchema: validationRules,
+    onSubmit: async (values) => {
+      const authToken = await getAccessTokenSilently();
+      const requestConfig = {
+        url: 'http://localhost:4000/v1/events',
+        method: 'post',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${authToken}`,
+        },
+        data: {
+          eventName: values.eventName,
+          gameMaster: values.gameMaster,
+          date: values.date,
+          time: values.time,
+          timeZone: values.timeZone,
+          locationType: values.locationType,
+          location: values.location,
+          description: values.description,
+          keywords: values.keywords,
+        },
+      };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    const authToken = await getAccessTokenSilently();
-
-    const requestConfig = {
-      url: 'http://localhost:4000/v1/events',
-      method: 'post',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${authToken}`,
-      },
-      data: {
-        eventName: eventFormValues.eventName,
-        gameMaster: eventFormValues.gameMaster,
-        date: eventFormValues.date,
-        time: eventFormValues.time,
-        timeZone: eventFormValues.timeZone,
-        location: eventFormValues.location,
-        description: eventFormValues.description,
-        keywords: eventFormValues.keywords,
-      },
-    };
-
-    axios(requestConfig)
-      .then(() => {
-        setSuccess(true);
-      })
-      .catch((err) => {
-        setError(err);
-      });
-  };
+      axios(requestConfig)
+        .then(() => {
+          setSuccess(true);
+        })
+        .catch((err) => {
+          setError(err);
+        });
+    },
+  });
 
   if (success) {
     return <Redirect to="/event/submitted" />;
@@ -108,39 +117,43 @@ function CreateEvent() {
   }
 
   return (
-    <Container maxWidth="sm">
+    <SectionContainer direction="column">
       <Typography className={classes.title} variant="h3">
         Create a New Event
       </Typography>
       <form
         className={classes.root}
-        onSubmit={handleSubmit}
+        onSubmit={formik.handleSubmit}
         id="eventCreateForm"
       >
         <TextField
-          required
-          variant="outlined"
-          id="eventName"
-          label="Required"
-          name="eventName"
-          value={eventFormValues.eventName}
-          className={classes.formControl}
-          onChange={handleInputChange}
           fullWidth
+          variant="outlined"
+          className={classes.formControl}
+          id="eventName"
+          name="eventName"
+          label="Event Name"
+          value={formik.values.eventName}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.eventName && Boolean(formik.errors.eventName)}
+          helperText={formik.touched.eventName && formik.errors.eventName}
         />
 
         <FormControl
-          className={classes.formControl}
-          variant="outlined"
           fullWidth
+          variant="outlined"
+          className={classes.formControl}
         >
           <InputLabel id="gameMaster-label">GM</InputLabel>
           <Select
             labelId="gameMaster-label"
             name="gameMaster"
-            value={eventFormValues.gameMaster}
-            onChange={handleInputChange}
             label="GM"
+            value={formik.values.gameMaster}
+            onChange={formik.handleChange}
+            error={formik.touched.gameMaster && Boolean(formik.errors.gameMaster)}
+            helperText={formik.touched.gameMaster && formik.errors.gameMaster}
           >
             <MenuItem value="">
               <em>None</em>
@@ -156,13 +169,16 @@ function CreateEvent() {
             name="date"
             label="Date"
             type="date"
-            value={eventFormValues.date}
+            variant="outlined"
+            value={formik.values.date}
             className={classes.formControl}
             InputLabelProps={{
               shrink: true,
             }}
-            variant="outlined"
-            onChange={handleInputChange}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.name && Boolean(formik.errors.name)}
+            helperText={formik.touched.name && formik.errors.name}
             fullWidth
           />
 
@@ -170,7 +186,7 @@ function CreateEvent() {
             name="time"
             label="Start time"
             type="time"
-            value={eventFormValues.time}
+            value={formik.values.time}
             className={classes.formControl}
             InputLabelProps={{
               shrink: true,
@@ -179,7 +195,10 @@ function CreateEvent() {
               step: 300, // 5 min
             }}
             variant="outlined"
-            onChange={handleInputChange}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.time && Boolean(formik.errors.time)}
+            helperText={formik.touched.time && formik.errors.time}
             fullWidth
           />
 
@@ -192,8 +211,11 @@ function CreateEvent() {
             <Select
               labelId="timeZone-label"
               name="timeZone"
-              value={eventFormValues.timeZone}
-              onChange={handleInputChange}
+              value={formik.values.timeZone}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.timeZone && Boolean(formik.errors.timeZone)}
+              helperText={formik.touched.timeZone && formik.errors.timeZone}
               label="Time Zone"
             >
               <MenuItem value="">
@@ -213,13 +235,16 @@ function CreateEvent() {
           required
           name="description"
           label="Event Description"
-          value={eventFormValues.description}
+          value={formik.values.description}
           multiline
           rows={4}
           variant="outlined"
           className={classes.formControl}
           fullWidth
-          onChange={handleInputChange}
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.description && Boolean(formik.errors.description)}
+          helperText={formik.touched.description && formik.errors.description}
         />
 
         <FormControl component="fieldset" className={classes.formControl}>
@@ -227,40 +252,48 @@ function CreateEvent() {
           <RadioGroup
             aria-label="location-type"
             name="locationType"
-            value={eventFormValues.locationType}
-            onChange={handleInputChange}
+            value={formik.values.locationType}
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            error={formik.touched.locationType && Boolean(formik.errors.locationType)}
+            helperText={formik.touched.locationType && formik.errors.locationType}
           >
             <FormControlLabel value="online" control={<Radio />} label="Online" />
             <FormControlLabel value="venue" control={<Radio />} label="Venue" />
           </RadioGroup>
         </FormControl>
 
-        {eventFormValues.locationType === 'venue'
+        {formik.values.locationType === 'venue'
           ? (
             <TextField
               required
               name="location"
               label="Venue Address"
-              value={eventFormValues.location}
+              value={formik.values.location}
               multiline
               rows={1}
               variant="outlined"
               className={classes.formControl}
               fullWidth
-              onChange={handleInputChange}
+              onChange={formik.handleChange}
+              onBlur={formik.handleBlur}
+              error={formik.touched.location && Boolean(formik.errors.location)}
+              helperText={formik.touched.location && formik.errors.location}
             />
           ) : <></>}
         <TextField
           name="keywords"
           label="Keywords"
-          value={eventFormValues.keywords}
+          value={formik.values.keywords}
           multiline
           rows={4}
           variant="outlined"
           className={classes.formControl}
           fullWidth
-          onChange={handleInputChange}
-          helperText="Comma separated values, please!"
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          error={formik.touched.keywords && Boolean(formik.errors.keywords)}
+          helperText={formik.touched.keywords && formik.errors.keywords}
         />
         <Button
           variant="contained"
@@ -272,7 +305,7 @@ function CreateEvent() {
           Submit
         </Button>
       </form>
-    </Container>
+    </SectionContainer>
   );
 }
 
