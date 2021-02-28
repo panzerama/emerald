@@ -27,7 +27,7 @@ exports.createEvent = async (req, res, next) => {
   }
 
   let geocodedLocation;
-  if (req.body.locatoinType) {
+  if (req.body.locationType === 'venue') {
     try {
       geocodedLocation = await getLocation(req.body.location);
       debug(`Geocoded Location ${geocodedLocation}`);
@@ -47,7 +47,7 @@ exports.createEvent = async (req, res, next) => {
     eventName: req.body.eventName,
     gameMaster: req.body.gameMaster,
     date: eventDate,
-    locationType: req.body.locatoinType,
+    locationType: req.body.locationType,
     location: geocodedLocation,
     description: req.body.description,
     keywords: keywordArr,

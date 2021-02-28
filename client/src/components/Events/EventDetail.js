@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useParams } from 'react-router-dom';
 import { Grid, Typography, makeStyles, Button } from '@material-ui/core';
 
+import axios from '../../utils/axiosWrapper';
 import Loading from '../Loading';
 import SectionContainer from '../LayoutUtils/SectionContainer';
 import LocationDetail from '../LocationDetail';

@@ -17,7 +17,7 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core';
-import axios from 'axios';
+import axios from '../../utils/axiosWrapper';
 
 import SectionContainer from '../LayoutUtils/SectionContainer';
 
@@ -77,6 +77,7 @@ function CreateEvent() {
     },
     validationSchema: validationRules,
     onSubmit: async (values) => {
+      console.log('form values ', values);
       const authToken = await getAccessTokenSilently();
       const requestConfig = {
         url: 'http://localhost:4000/v1/events',
@@ -137,7 +138,6 @@ function CreateEvent() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.eventName && Boolean(formik.errors.eventName)}
-          helperText={formik.touched.eventName && formik.errors.eventName}
         />
 
         <FormControl
@@ -153,7 +153,7 @@ function CreateEvent() {
             value={formik.values.gameMaster}
             onChange={formik.handleChange}
             error={formik.touched.gameMaster && Boolean(formik.errors.gameMaster)}
-            helperText={formik.touched.gameMaster && formik.errors.gameMaster}
+
           >
             <MenuItem value="">
               <em>None</em>
@@ -178,7 +178,6 @@ function CreateEvent() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.name && Boolean(formik.errors.name)}
-            helperText={formik.touched.name && formik.errors.name}
             fullWidth
           />
 
@@ -198,7 +197,6 @@ function CreateEvent() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.time && Boolean(formik.errors.time)}
-            helperText={formik.touched.time && formik.errors.time}
             fullWidth
           />
 
@@ -215,7 +213,6 @@ function CreateEvent() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={formik.touched.timeZone && Boolean(formik.errors.timeZone)}
-              helperText={formik.touched.timeZone && formik.errors.timeZone}
               label="Time Zone"
             >
               <MenuItem value="">
@@ -244,7 +241,6 @@ function CreateEvent() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.description && Boolean(formik.errors.description)}
-          helperText={formik.touched.description && formik.errors.description}
         />
 
         <FormControl component="fieldset" className={classes.formControl}>
@@ -256,7 +252,7 @@ function CreateEvent() {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             error={formik.touched.locationType && Boolean(formik.errors.locationType)}
-            helperText={formik.touched.locationType && formik.errors.locationType}
+
           >
             <FormControlLabel value="online" control={<Radio />} label="Online" />
             <FormControlLabel value="venue" control={<Radio />} label="Venue" />
@@ -278,7 +274,6 @@ function CreateEvent() {
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
               error={formik.touched.location && Boolean(formik.errors.location)}
-              helperText={formik.touched.location && formik.errors.location}
             />
           ) : <></>}
         <TextField
@@ -293,7 +288,6 @@ function CreateEvent() {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           error={formik.touched.keywords && Boolean(formik.errors.keywords)}
-          helperText={formik.touched.keywords && formik.errors.keywords}
         />
         <Button
           variant="contained"
