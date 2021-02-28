@@ -63,11 +63,12 @@ function CreateEvent() {
   const [error, setError] = useState(null);
   const { getAccessTokenSilently } = useAuth0();
 
+  const now = new Date();
   const formik = useFormik({
     initialValues: {
       eventName: '',
       gameMaster: '',
-      date: '',
+      date: now.toISOString().substring(0, 10),
       time: '',
       timeZone: '',
       locationType: '',
