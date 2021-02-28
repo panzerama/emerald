@@ -19,7 +19,8 @@ import {
 } from '@material-ui/core';
 import axios from '../../utils/axiosWrapper';
 
-import SectionContainer from '../LayoutUtils/SectionContainer';
+import SectionContainer from '../Util/SectionContainer';
+import FileUploader from '../Util/FileUploader';
 
 const validationRules = yup.object({
   eventName: yup.string('Event Name').required('Event name required'),
@@ -290,6 +291,9 @@ function CreateEvent() {
           onBlur={formik.handleBlur}
           error={formik.touched.keywords && Boolean(formik.errors.keywords)}
         />
+
+        <FileUploader />
+
         <Button
           variant="contained"
           color="primary"

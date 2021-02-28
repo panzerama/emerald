@@ -4,7 +4,7 @@ import { Grid, Typography, makeStyles, Button } from '@material-ui/core';
 
 import axios from '../../utils/axiosWrapper';
 import Loading from '../Loading';
-import SectionContainer from '../LayoutUtils/SectionContainer';
+import SectionContainer from '../Util/SectionContainer';
 import LocationDetail from '../LocationDetail';
 
 const useStyles = makeStyles({
