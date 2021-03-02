@@ -1,13 +1,15 @@
 import axios from './AxiosWrapper';
 
-export default function useFileUpload(file, uploadProgressHandler) {
+export default function useFileUpload(key, file, uploadProgressHandler) {
+  const formData = new FormData();
+  formData.append(key, file);
   const axiosConfig = {
-    url: '/upload',
+    url: '/v1/uploads',
     method: 'post',
     headers: {
       'Content-Type': 'multipart/form-data',
     },
-    data: file,
+    data: formData,
     onUploadProgress: uploadProgressHandler,
   };
 

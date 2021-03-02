@@ -39,7 +39,6 @@ export default function FileUploader() {
   const selectFile = (event) => {
     const { files } = event.target;
     setSelectedFile(files[0]);
-    console.log('file name ? ', selectedFile.name);
   };
 
   const progressUpdater = (event) => {
@@ -49,7 +48,7 @@ export default function FileUploader() {
   const upload = () => {
     console.log('file to upload ', selectedFile);
     if (selectedFile) {
-      useFileUpload(selectedFile, progressUpdater)
+      useFileUpload('featImage', selectedFile, progressUpdater)
         .then((response) => {
           console.log(response.data.message);
           setSelectedFile(null);

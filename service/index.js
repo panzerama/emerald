@@ -12,6 +12,7 @@ const helmet = require('helmet');
 const eventsRouter = require('./routers/eventsRouter');
 const postsRouter = require('./routers/postsRouter');
 const usersRouter = require('./routers/usersRouter');
+const uploadsRouter = require('./routers/uploadsRouter');
 
 const user = process.env.MONGO_USER;
 const password = process.env.MONGO_PASS;
@@ -43,6 +44,7 @@ app.use('/img', express.static('resources/images'));
 app.use('/v1/events', eventsRouter);
 app.use('/v1/posts', postsRouter);
 app.use('/v1/users', usersRouter);
+app.use('/v1/uploads', uploadsRouter);
 
 app.listen(port, () => {
   debug(`Example app listening at http://localhost:${port}`);
