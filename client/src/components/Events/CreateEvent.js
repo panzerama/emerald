@@ -17,7 +17,7 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core';
-import axios from '../../utils/axiosWrapper';
+import axios from '../../utils/AxiosWrapper';
 
 import SectionContainer from '../Util/SectionContainer';
 import FileUploader from '../Util/FileUploader';
@@ -293,7 +293,6 @@ function CreateEvent() {
         />
 
         <FileUploader />
-
         <Button
           variant="contained"
           color="primary"
@@ -304,6 +303,7 @@ function CreateEvent() {
           Submit
         </Button>
       </form>
+
     </SectionContainer>
   );
 }

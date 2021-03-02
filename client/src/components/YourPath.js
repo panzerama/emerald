@@ -9,7 +9,7 @@ import {
 } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
-import SectionContainer from './LayoutUtils/SectionContainer';
+import SectionContainer from './Util/SectionContainer';
 
 const useStyles = makeStyles((theme) => ({
   root: {

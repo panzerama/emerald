@@ -2,7 +2,7 @@ import React from 'react';
 import { Grid, Typography, makeStyles } from '@material-ui/core';
 
 import EventsGrid from './EventsGrid';
-import SectionContainer from '../LayoutUtils/SectionContainer';
+import SectionContainer from '../Util/SectionContainer';
 
 const useStyles = makeStyles((theme) => ({
   root: {

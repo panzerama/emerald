@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Grid, Typography, makeStyles, Button } from '@material-ui/core';
 
-import axios from '../../utils/axiosWrapper';
+import axios from '../../utils/AxiosWrapper';
 import Loading from '../Loading';
 import SectionContainer from '../Util/SectionContainer';
 import LocationDetail from '../LocationDetail';

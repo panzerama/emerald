@@ -1,4 +1,4 @@
-import axios from './axiosWrapper';
+import axios from './AxiosWrapper';
 
 export default function useFileUpload(file, uploadProgressHandler) {
   const axiosConfig = {

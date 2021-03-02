@@ -4,7 +4,7 @@ import { Grid, Typography } from '@material-ui/core';
 import { makeStyles } from '@material-ui/core/styles';
 
 import Post from './Post';
-import SectionContainer from '../LayoutUtils/SectionContainer';
+import SectionContainer from '../Util/SectionContainer';
 
 const useStyles = makeStyles((theme) => ({
   root: {
