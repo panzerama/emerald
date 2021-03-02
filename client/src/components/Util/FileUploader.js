@@ -5,7 +5,7 @@ import {
   CircularProgress,
   makeStyles,
 } from '@material-ui/core';
-import useFileUpload from '../../utils/FileUpload';
+import useFileUpload from './FileUpload';
 
 const useStyles = makeStyles((theme) => ({
   root: {

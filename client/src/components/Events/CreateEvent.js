@@ -17,7 +17,7 @@ import {
   makeStyles,
   Typography,
 } from '@material-ui/core';
-import axios from '../../utils/AxiosWrapper';
+import axios from '../Util/AxiosWrapper';
 
 import SectionContainer from '../Util/SectionContainer';
 import FileUploader from '../Util/FileUploader';

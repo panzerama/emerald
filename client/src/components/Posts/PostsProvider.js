@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import axios from '../../utils/AxiosWrapper';
+import axios from '../Util/AxiosWrapper';
 
 import PostContainer from './PostContainer';
 
